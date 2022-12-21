@@ -5,7 +5,7 @@ export default {
     lang: 'zh-CN',
     title: 'AHao',
     description: '热爱生活，热爱前端',
-    base: '/',
+    base: '/nodepads/',
     ignoreDeadLinks: true,// 忽略无效链接
     lastUpdated: true,// 最后更新时间
     cleanUrls: 'without-subfolders',// 去除链接中的 .html 后缀
