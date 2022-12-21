@@ -138,3 +138,6 @@ docs/.vitepress/cache
 
 # fleets
 .fleets
+
+
+docs/local
