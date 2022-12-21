@@ -19,20 +19,30 @@
 │   ├── .vitepress
 │   │   ├── cache
 │   │   │   └── ..
+│   │   ├── theme // 主题
+│   │   │   ├── index.js
+│   │   │── ├── assets // 静态资源
+│   │   │── │── ├── css
+│   │   │── │── │   ├── style.css
+│   │   │── │── └── img
+│   │   │       ├── hero.png
 │   │   ├── config.js
 │   │   ├── nav.js
 │   │   ├── sidebar.js
-│   │   ├── assets
-│   │   │   ├── css
-│   │   │   │   └── style.css
-│   │   │   └── img
-│   │   │       ├── hero.png
-│   ├── index.md
-│   └── zh
+│   ├── index.md // 首页
+│   ├── public // 静态资源
+│   │   ├── favicon.ico
+│   │   └── hero.png
+│   │   └── mainifest.json
+│   └── zh // 中文文档
 │       ├── ...
 │       └── README.md
+├── utils
+|   ├── __config__.js // 配置文件
+|   ├── index.js // 生成sidebar
+|   ├── markdownThemePathAll.js // 预览markdown主题
 ├── package.json
-├── README.md
-├── yarn.lock
-└── .gitignore
+├── yarn.lock // 依赖(yarn)
+└── .gitignore // git忽略文件
+├── README.md // 项目说明
 ```
