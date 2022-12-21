@@ -1,6 +1,6 @@
 # MiaoGuai
 
-<img src=".https://image.qcc.com/logo/f67a82132aa79125367870904dd5c333.jpg?x-oss-process=style/logo_200" style="border-radius:10px;">
+<img src="https://image.qcc.com/logo/f67a82132aa79125367870904dd5c333.jpg?x-oss-process=style/logo_200" style="border-radius:10px;">
 
 # 常用链接
 

@@ -6,7 +6,7 @@ hero:
   text: 一个简单的我
   tagline: 热爱生活，热爱前端
   image:
-    src: assets/img/hero.png
+    src: /hero.png
     alt: 头像
   actions:
     - theme: brand

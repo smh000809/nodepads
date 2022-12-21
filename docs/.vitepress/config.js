@@ -6,7 +6,6 @@ export default {
     title: 'AHao',
     description: '热爱生活，热爱前端',
     base: '/',
-    appearance: 'dark',// 设置主题
     ignoreDeadLinks: true,// 忽略无效链接
     lastUpdated: true,// 最后更新时间
     cleanUrls: 'without-subfolders',// 去除链接中的 .html 后缀
@@ -14,7 +13,6 @@ export default {
         ['meta', { name: 'theme-color', content: '#000' }],
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['link', { rel: 'manifest', href: '/manifest.json' }],
-        ['link', { rel: 'stylesheet', href: '/assets/css/style.css' }],
     ],// 设置浏览器主题颜色
     markdown: {
         headers: {
@@ -24,6 +22,8 @@ export default {
     themeConfig: {
         nav,
         sidebar,
+        appearance: 'dark',// 设置主题颜色
+        logo: '/hero.png',
         editLink: {
             pattern: 'Javascript:void(0);',
             text: 'Edit this page on GitHub'
