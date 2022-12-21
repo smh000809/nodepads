@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as r,a}from"./app.e06d0b2a.js";const x=JSON.parse('{"title":"MiaoGuai","description":"","frontmatter":{},"headers":[],"relativePath":"zh/MiaoGuai.md","lastUpdated":1671595590000}'),n={name:"zh/MiaoGuai.md"},s=a("",6),l=[s];function o(d,g,i,c,h,m){return r(),e("div",null,l)}const y=t(n,[["render",o]]);export{x as __pageData,y as default};
