@@ -11,6 +11,9 @@
     "docs:sidebar": "node ./utils/index.js"
   },
   "devDependencies": {
+    "less": "^4.1.3",
+    "sass": "^1.57.1",
+    "stylus": "^0.59.0",
     "vitepress": "^1.0.0-alpha.32",
     "vue": "^3.2.45"
   }

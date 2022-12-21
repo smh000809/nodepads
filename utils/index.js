@@ -1,6 +1,6 @@
 console.clear();
 const fs = require('fs');
-const config = require('../__config__.js');
+const config = require('./__config__');
 /* 项目在本地的路径 */
 const rootProject = config['rootProject'];
 /* 不需要生成侧边栏的文件名 */

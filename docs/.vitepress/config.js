@@ -16,8 +16,12 @@ export default {
     ],// 设置浏览器主题颜色
     markdown: {
         headers: {
-            level: [0, 0],// 设置标题层级
+            level: [2, 3],// 设置标题层级
         },
+        // 代码主题: ~node_modules/shiki/themes
+        theme: 'dracula-soft',// 设置主题颜色
+        toc: { level: [1, 2, 3, 4, 5, 6] },// 设置目录层级
+        lineNumbers: true,// 代码块显示行号
     },// markdown 配置
     themeConfig: {
         nav,
@@ -36,8 +40,8 @@ export default {
             copyright: ''
         },// 页脚
         // carbonAds: {
-            // code: 'CEBDT27Y',
-            // placement: 'vuejsorg'
+        // code: 'CEBDT27Y',
+        // placement: 'vuejsorg'
         // },// 广告
     },
 }
