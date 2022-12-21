@@ -11,8 +11,8 @@ export default {
     cleanUrls: 'without-subfolders',// 去除链接中的 .html 后缀
     head: [
         ['meta', { name: 'theme-color', content: '#000' }],
-        ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['link', { rel: 'manifest', href: '/manifest.json' }],
+        ['link', { rel: 'icon', href: '/nodepads/favicon.ico' }],
+        ['link', { rel: 'manifest', href: '/nodepads/manifest.json' }],
     ],// 设置浏览器主题颜色
     markdown: {
         headers: {
