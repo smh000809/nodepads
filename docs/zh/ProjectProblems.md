@@ -413,3 +413,21 @@ export default {
 </script>
 ```
 
+# Element UI 低版本使用 el-cascader 数据量大造成的卡顿[^13.2]
+```vue
+<template>
+	<el-cascader @visible-change="visibleChange"></el-cascader>
+</template>
+<script>
+export default {
+  methods: {
+    visibleChange() {
+      this.$nextTick(()=>{
+        let $el = document.querySelectorAll('.el-cascader-panel .el-cascader-node[aria-owns]');
+        Array.from($el).map((el) => el.removeAttribute('aria-owns'));
+      })
+    },
+	}
+}
+</script>
+```

@@ -171,8 +171,7 @@ doc.close();
 #### **1. defer 属性**
 
 ```js
-< script src = "file.js"
-defer > < /script>
+<script src = "file.js" defer > </script>
 ```
 
 defer属性声明这个脚本中将不会有 document.write 或 dom 修改。所有有defer的属性都会按照顺序执行。
@@ -182,8 +181,7 @@ defer属性声明这个脚本中将不会有 document.write 或 dom 修改。所
 #### **2. async 属性**
 
 ```js
-< script src = "file.js"
-async > < /script>
+<script src = "file.js" async > </script>
 ```
 
 async属性是HTML5新增的。作用和defer类似，但是它将在下载后尽快执行，**不能保证脚本会按顺序执行**。它们将在onload 事件之前完成。
@@ -257,5 +255,4 @@ JS的加载其实是由两阶段组成：下载内容（download bytes）和执�
 * 异步加载 js ，使用非阻塞方式，就是此文内容。
 
 * 尽量不直接在页面元素上使用 Inline Javascript，如onClick 。有利于统一维护和缓存处理。
-
 
