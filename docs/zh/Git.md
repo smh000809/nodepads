@@ -215,7 +215,7 @@ $ git commit -a -m "<提交的描述信息>"
 $ git commit --amend
 
 # 合并上一次提交（用于反复修改）
-git commit --amend -m 'xxx'
+$ git commit --amend -m 'xxx'
 ```
 
 ## git fetch

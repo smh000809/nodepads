@@ -2,6 +2,7 @@
 
 ```mysql
 mysql> SELECT 1 + 1 AS solution; # 测试MySql连接
+mysql> mysqladmin -u root password # MacOS用Homebrew默认为管理员密码可修改密码
 mysql> show database; #显示数据库
 mysql> show databases; #显示所有数据库
 mysql> use 数据库名称; #切换mysql数据库
@@ -21,6 +22,7 @@ mysql> insert into students(id,name,age,birthday)values(1,"AHao",20,20000809); #
 mysql> select * from students limit 3 offset 2; #显示从第2条开始的3条数据
 mysql> drop database 数据库名称; #删库
 mysql> ALTER user 'root'@'localhost' IDENTIFIED BY '新密码'; #改密码
+mysql> flush privileges; # 重新加载
 ```
 
 ## > explain

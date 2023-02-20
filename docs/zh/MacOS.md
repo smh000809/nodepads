@@ -4,14 +4,13 @@
 
 - 安装
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 - 卸载
 ```bash
-sudo /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+sudo /usr/bin/ruby -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 ```
 - 换源
-
 
 简介
 Homebrew 是一款自由及开放源代码的软件包管理系统，用以简化 macOS 和 linux 系统上的软件安装过程。它拥有安装、卸载、更新、查看、搜索等很多实用的功能，通过简单的一条指令，就可以实现包管理，十分方便快捷。
@@ -245,7 +244,7 @@ $ gem update --system
 # 删除镜像源
 $ gem sources --remove  https://gems.ruby-china.org/
 # 添加镜像源
-gem sources --add  https://gems.ruby-china.com/
+$gem sources --add  https://gems.ruby-china.com/
 ```
 
 | 命令                          | 备注                                  |

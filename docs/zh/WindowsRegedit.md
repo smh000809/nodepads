@@ -2,16 +2,16 @@
 
 ## 第一课 注册表基础
 1. 什么是注册表
-  注册表是windows操作系统、硬件设备以及客户应用程序得以正常运行和保存设置的核心“数据库”，也可以说是一个非常巨大的树状分层结构的数据库系统。
-  注册表记录了用户安装在计算机上的软件和每个程序的相互关联信息，它包括了计算机的硬件配置，包括自动配置的即插即用的设备和已有的各种设备说明、状态属性以及各种状态信息和数据。利用一个功能强大的注册表数据库来统一集中地管理系统硬件设施、软件配置等信息，从而方便了管理，增强了系统的稳定性。
+    注册表是windows操作系统、硬件设备以及客户应用程序得以正常运行和保存设置的核心“数据库”，也可以说是一个非常巨大的树状分层结构的数据库系统。
+    注册表记录了用户安装在计算机上的软件和每个程序的相互关联信息，它包括了计算机的硬件配置，包括自动配置的即插即用的设备和已有的各种设备说明、状态属性以及各种状态信息和数据。利用一个功能强大的注册表数据库来统一集中地管理系统硬件设施、软件配置等信息，从而方便了管理，增强了系统的稳定性。
 2. 注册表的功能
-  刚才我们看到了，注册表中记录了用户安装在计算机上的软件和每个程序的相关信息，通过它可以控制硬件、软件、用户环境和操作系统界面的数据信息文件。
+    刚才我们看到了，注册表中记录了用户安装在计算机上的软件和每个程序的相关信息，通过它可以控制硬件、软件、用户环境和操作系统界面的数据信息文件。
    相关知识：注册表文件的数据信息保存在system.dat和user.dat中、利用regedit.exe程序能够存取注册表文件（其实大家可能也知道regedt32.exe，这两个程序是一样的）
 3. 编辑器说明：
-在运行里键入regedit就可以进入了
-**根键**：这个称为HKEY…………，某一项的句柄项：附加的文件夹和一个或多个值
-**子项**：在某一个项（父项）下面出现的项（子项）
-**值项**：带有一个名称和一个值的有序值，每个项都可包括任何数量的值项，值项由三个部分组成：名称、数据类型和数据。
+   在运行里键入regedit就可以进入了
+   **根键**：这个称为HKEY…………，某一项的句柄项：附加的文件夹和一个或多个值
+   **子项**：在某一个项（父项）下面出现的项（子项）
+   **值项**：带有一个名称和一个值的有序值，每个项都可包括任何数量的值项，值项由三个部分组成：名称、数据类型和数据。
     - 名称：不包括反斜线的字符、数字、代表符和空格的任意组合。同一键中不可有相同的名称
     - 数据类型：包括字符串、二进制和双字节等
     - 数据：值项的具体值，它的大小可以占用64KB
@@ -19,17 +19,17 @@
 ## 第二课 总体结构分析
 1. 注册表包括以下5个根键
     1. HKEY_CLASSES_ROOT
-说明：该根键包括启动应用程序所需的全部信息，包括扩展名，应用程序与文档之间的关系，驱动程序名，DDE和OLE信息，类ID
-编号和应用程序与文档的图标等。
+    说明：该根键包括启动应用程序所需的全部信息，包括扩展名，应用程序与文档之间的关系，驱动程序名，DDE和OLE信息，类ID
+    编号和应用程序与文档的图标等。
     2. HKEY_CURRENT_USER
-说明：该根键包括当前登录用户的配置信息，包括环境变量，个人程序以及桌面设置等
+    说明：该根键包括当前登录用户的配置信息，包括环境变量，个人程序以及桌面设置等
     3. HKEY_LOCAL_MACHINE
-说明：该根键包括本地计算机的系统信息，包括硬件和操作系统信息，安全数据和计算机专用的各类软件设置信息
+    说明：该根键包括本地计算机的系统信息，包括硬件和操作系统信息，安全数据和计算机专用的各类软件设置信息
     4. HKEY_USERS
-说明：该根键包括计算机的所有用户使用的配置数据，这些数据只有在用户登录系统时才能访问。这些信息告诉系统当前用户使
-用的图标，激活的程序组，开始菜单的内容以及颜色，字体
-5.HKEY_CURRENT_CONFIG
-说明：该根键包括当前硬件的配置信息，其中的信息是从HKEY_LOCAL_MACHINE中映射出来的。
+    说明：该根键包括计算机的所有用户使用的配置数据，这些数据只有在用户登录系统时才能访问。这些信息告诉系统当前用户使
+    用的图标，激活的程序组，开始菜单的内容以及颜色，字体
+    5.HKEY_CURRENT_CONFIG
+    说明：该根键包括当前硬件的配置信息，其中的信息是从HKEY_LOCAL_MACHINE中映射出来的。
 ****
 ## 第三课 HKEY_CLASSES_ROOT
 我们知道，在这一个根键中记录的是WINDOWS操作系统中所有数据文件的信息内容，主要记录了不同文件的文件扩展名和与之相对应的应用程序。这就是为什么我们双击某一个文档的时候，可以由系统自动调出应用程序的所在了。这个根键的子键当大家展开时发现是非常多的，它主要分为两种：一是已经注册的各类文件的扩展名；一是各种文件类型的有关信息。下面我们以AVIFILE举例说明一下其下面的子项的含义：
@@ -134,7 +134,7 @@ HKEY_LOCAL_MACHINE：保存操作系统及硬件相关信息的配置单元，�
  重启计算机，启动时按F8键进入高级选项菜单， 选择最后一次正确的配置，回车了，OK
 5. 通过局域网来恢复注册表
  这个我们一般是指连入局域网的某一计算机（我们假设叫aaaaa）的注册表被管理员锁了，但有另一台计算机（我们假设叫B）的注册表可以用，现在我们用B来解除A的锁定。
-进入B的注册表，选择文件中的连接网络注册表，在查找位置中输入aaaaa，这时注册表中出现了songxiang计算机的注册表，修改键值：aaaaa\HEKY_USERS\S-1-5-21-823518204-688789844-842925246-500\Software\Microsoft\Windows\CurrentVersion\Policies\System下的disableregistrytools值改为0就可以了。S-1-5-21-823518204-688789844-842925246-500这一大堆数知道什么意思吗，是超级管理员，重新安装系统
+    进入B的注册表，选择文件中的连接网络注册表，在查找位置中输入aaaaa，这时注册表中出现了songxiang计算机的注册表，修改键值：aaaaa\HEKY_USERS\S-1-5-21-823518204-688789844-842925246-500\Software\Microsoft\Windows\CurrentVersion\Policies\System下的disableregistrytools值改为0就可以了。S-1-5-21-823518204-688789844-842925246-500这一大堆数知道什么意思吗，是超级管理员，重新安装系统
 *****
 ## 第十二课 注册表的优化
 一. 我们为什么要优化注册表
@@ -151,20 +151,20 @@ HKEY_LOCAL_MACHINE：保存操作系统及硬件相关信息的配置单元，�
 看到没用的就全删了就行了
 3. 系统安装时产生的无用信息：去掉吧，有可能启动变快呢
     1. 删除多余时区（我是只留北京时区）
-位置：HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsNT\CurrentVersion\Time Zones
-如果你只要北京时区的话，那么除了China Standard Time，其余的都删了吧
+    位置：HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsNT\CurrentVersion\Time Zones
+    如果你只要北京时区的话，那么除了China Standard Time，其余的都删了吧
     2. 清除国家列表（我只留中华人民共和国）
-位置：HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Telephony\Country List
-保留86号文件夹，其余删
+    位置：HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Telephony\Country List
+    保留86号文件夹，其余删
     3. 清除多余的语言代码（我只保留英语—0409和中文—0804）
-位置：HKEY_LOCAL_MACHINE\SYSTEM\CurrnetControlSet\Control\Nls\Locale
-没用的删了吧
+    位置：HKEY_LOCAL_MACHINE\SYSTEM\CurrnetControlSet\Control\Nls\Locale
+    没用的删了吧
     4. 删除多余的键盘布局：
-位置：HKEY_LOCAL_MACHINE\SYSTEM\CurrnetControlSet\Control\Keyboard Layouts
-你可以把每个键值都打开看看，不需要的输入法删除即可
+    位置：HKEY_LOCAL_MACHINE\SYSTEM\CurrnetControlSet\Control\Keyboard Layouts
+    你可以把每个键值都打开看看，不需要的输入法删除即可
     5. 删除失效的文件关联
-位置：HKEY_CLASSES_ROOT主键可分为两部分：第一部分用来定义文件类型；第二部分与第一部分一一对应，用于记录打开
-文件的应用程序。一般，在打开第二部分的可疑子项后，若该键下的COMMAND下没有内容，就可以删掉了
+    位置：HKEY_CLASSES_ROOT主键可分为两部分：第一部分用来定义文件类型；第二部分与第一部分一一对应，用于记录打开
+    文件的应用程序。一般，在打开第二部分的可疑子项后，若该键下的COMMAND下没有内容，就可以删掉了
 ****
 ## 第十三课 个性化设置
 - 去掉桌面快捷方式上的小键头
@@ -324,12 +324,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}
   （REG_DWORD）
 值：1
 - 屏蔽显示选项中的“外观”
-位置：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System
-新建值项：NoDispAppearancePage
+  位置：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System
+  新建值项：NoDispAppearancePage
   （REG_DWORD）值：1
 - 屏蔽显示选项中的“设置”
-位置：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System
-新建值项：NoDispSettingsPage
+  位置：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System
+  新建值项：NoDispSettingsPage
   （REG_DWORD）值：1
 - 屏蔽显示选项中的“屏幕保护程序密码”
 位置：HKEY_CURRENT_USER\Software\Policies\Microsoft
