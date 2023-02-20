@@ -1,6 +1,6 @@
 # MySql
 
-```mysql
+```bash
 mysql> SELECT 1 + 1 AS solution; # 测试MySql连接
 mysql> mysqladmin -u root password # MacOS用Homebrew默认为管理员密码可修改密码
 mysql> show database; #显示数据库
