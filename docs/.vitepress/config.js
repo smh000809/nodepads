@@ -33,7 +33,7 @@ export default {
             text: 'Edit this page on GitHub'
         },// 编辑链接
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/FTZANKE' }
+            { icon: 'github', link: 'https://github.com/FTZANKE/nodepads' }
         ],// 社交链接
         footer: {
             message: 'Released under the MIT License.',
