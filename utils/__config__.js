@@ -1,3 +1,5 @@
+
+
 module.exports = {
     /* 项目在本地的路径 */
     rootProject: '/Users/shimenghao/Documents/code/nodepads',

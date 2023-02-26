@@ -1,4 +1,4 @@
-# package.jsonAndPackage-lock.json
+# packageJsonAndPackageLockJson
 
 模块化开发在前端越来越流行，使用 node 和 npm 可以很方便的下载管理项目所需的依赖模块。`package.json 用来描述项目及项目所依赖的模块信息。`
 
@@ -87,13 +87,13 @@ package-lock.json 是在 npm(^5.x.x.x)后才有，中途有几次更改
 
 ```json
 // package-lock.json
-{ 
-    "name": "lock-test",  
-    "version": "1.0.0",  
-    "dependencies": {    
+{
+    "name": "lock-test",
+    "version": "1.0.0",
+    "dependencies": {
         "A": { "version": "1.0.0" },
         "B": { "version": "1.0.0" },
-        "C": { "version": "1.0.0" }  
+        "C": { "version": "1.0.0" }
     }
 }
 ```
@@ -111,17 +111,17 @@ B 发布了新版本 1.0.1, 1.0.2, 1.1.0, 此刻如果我们不做操作是不�
 经过这些操作后 项目 lock-test 的 package.json 变成
 
 ```json
-// package 
+// package
 lock-test{ "dependencies": { "A": "^1.1.0" }}
 ```
 
 对应的 `package-lock.json` 文件
 
 ```json
-{  
-    "name": "lock-test",  
+{
+    "name": "lock-test",
     "version": "1.0.0",
-    "dependencies": {  
+    "dependencies": {
         "A": { "version": "1.1.0" },
         "B": { "version": "1.1.0" },
         "C": { "version": "1.0.0" }
@@ -146,18 +146,18 @@ lock-test{ "dependencies": { "A": "^1.1.0" }}
 因为存在了两个冲突的B版本，`package-lock.json` 文件会变成如下形式
 
 ```json
-{  
+{
     "name": "lock-test",
-    "version": "1.0.0",  
-    "dependencies": {    
-        "A": {      
-            "version": "1.1.0",      
-            "dependencies": {        
-                "B": { "version": "1.1.0" }      
-            }    
-        },    
-        "B": { "version": "2.0.0" },    
-        "C": { "version": "1.0.0" }  
+    "version": "1.0.0",
+    "dependencies": {
+        "A": {
+            "version": "1.1.0",
+            "dependencies": {
+                "B": { "version": "1.1.0" }
+            }
+        },
+        "B": { "version": "2.0.0" },
+        "C": { "version": "1.0.0" }
     }
 }
 ```

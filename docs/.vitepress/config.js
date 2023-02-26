@@ -28,6 +28,7 @@ export default {
         sidebar,
         appearance: 'dark',// 设置主题颜色
         logo: '/hero.png',
+        siteTitle: false,// 隐藏站点标题
         editLink: {
             pattern: 'Javascript:void(0);',
             text: 'Edit this page on GitHub'
