@@ -211,8 +211,8 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
 
   ```javascript
   //<div id="test">
-  //<p>whatever, blah blah.</p>
-  //hello，I am a <em>Demo</em>
+  // <p>whatever, blah blah.</p>
+  // hello，I am a <em>Demo</em>
   //</div>
   $('test').textContent
   //whatever, blah blah.hello, I am a Demo
@@ -729,7 +729,7 @@ Event Loop线程处理的任务被分为两类即 微任务（micro task）和�
 
 ## 触摸事件
 
-- 点透问题，解决点透问题
+- [**点透问题**，**解决点透问题**](#点透问题，解决点透问题)
 
 - touchstart ：用户开始触摸时触发
 
@@ -1011,7 +1011,7 @@ console.log(`a：${a}；b：${b}`);
 
 ## JS数组去重
 
-### 利用ES6 Set去重（ES6中最常用）
+### <font>利用ES6 Set去重（ES6中最常用）</font>
 
 ```javascript
 function unique (arr) {
@@ -1022,11 +1022,11 @@ console.log(unique(arr))
  //[1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {}, {}]
 ```
 
-不考虑兼容性，此方法代码最少。缺点</span>：无法去掉“{}”空对象
+不考虑兼容性，此方法代码最少。<span alt="shake">缺点</span>：无法去掉“{}”空对象
 
 ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
 
-### 利用for嵌套for，然后splice去重
+### <font>利用for嵌套for，然后splice去重</font>
 
 ```javascript
 function unique(arr){
@@ -1045,9 +1045,9 @@ var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, n
     //[1, "true", 15, false, undefined, NaN, NaN, "NaN", "a", {…}, {…}]
 ```
 
-外层循环元素，内层循环时比较值。值相同时，则删去这个值。缺点：NaN，{} 无法去重，null会直接去掉
+外层循环元素，内层循环时比较值。值相同时，则删去这个值。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重，null会直接去掉</span>
 
-### 利用indexOf去重
+### <font>利用indexOf去重</font>
 
 ```javascript
 function unique(arr) {
@@ -1068,9 +1068,9 @@ console.log(unique(arr))
 // [1, "true", true, 15, false, undefined, null, NaN, NaN, "NaN", 0, "a", {…}, {…}]
 ```
 
-新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。缺点：NaN，{} 无法去重</span>
+新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重</span>
 
-### 利用sort()去重
+### <font>利用sort()去重</font>
 
 ```javascript
 function unique(arr) {
@@ -1092,9 +1092,9 @@ function unique(arr) {
 // [0, 1, 15, "NaN", NaN, NaN, {…}, {…}, "a", false, null, true, "true", undefined]
 ```
 
-利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。缺点：NaN，{} 无法去重</span>
+利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重</span>
 
-### 利用hasOwnProperty[^所有的都去重了]
+### <font style="color:red;font-weight:900;">利用hasOwnProperty</font>[^所有的都去重了]
 
 ```javascript
 function unique(arr) {
@@ -1108,9 +1108,9 @@ function unique(arr) {
 //[1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {…}]   //所有的都去重了
 ```
 
-`hasOwnProperty()` 方法用来检测一个属性是否是对象的自有属性，而不是从原型链继承的[^如果该属性是自有属性，那么返回 true，否则返回 false。注：不会检测对象的原型链，只会检测当前对象本身，只有当前对象本身存在该属性时才返回 true]
+<code>hasOwnProperty()</code> 方法用来检测一个属性是否是对象的自有属性，而不是从原型链继承的[^如果该属性是自有属性，那么返回 true，否则返回 false。注：不会检测对象的原型链，只会检测当前对象本身，只有当前对象本身存在该属性时才返回 true]
 
-### 利用filter
+### <font>利用filter</font>
 
 ```javascript
 function unique(arr) {
@@ -1124,9 +1124,9 @@ function unique(arr) {
 //[1, "true", true, 15, false, undefined, null, "NaN", 0, "a", {…}, {…}]
 ```
 
-缺点：NaN 直接去掉，{} 无法去重
+<span alt="shake">缺点：</span><span alt="underline">NaN 直接去掉，{} 无法去重</span>
 
-### 利用递归去重
+### <font>利用递归去重</font>
 
 ```javascript
 function unique(arr) {
@@ -1153,18 +1153,18 @@ console.log(unique(arr))
 //[1, "a", "true", true, 15, false, 1, {…}, null, NaN, NaN, "NaN", 0, "a", {…}, undefined]
 ```
 
-缺点：NaN，{} 无法去重
+<span alt="shake">缺点：</span><span alt="underline">NaN，{} 无法去重</span>
 
-### [...new Set(arr)]
+### <font>[...new Set(arr)]</font>
 
 ```javascript
 var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,'NaN', 0, 0, 'a', 'a',{},{}];
 console.log([...new Set(arr)])
 ```
 
-优点：代码一句话。缺点：{} 无法去重
+<span alt="shake">优点：</span><span alt="underline">代码一句话。</span><span alt="shake">缺点：</span><span alt="underline">{} 无法去重</span>
 
-### 数组对象根据字段去重
+### <font>数组对象根据字段去重</font>
 
 ```js
 const uniqueArrayObject = (arr = [], key = 'id') => {
