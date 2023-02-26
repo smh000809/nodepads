@@ -832,5 +832,5 @@ $ git stash pop
 # 生成一个可供发布的压缩包
 $ git archive
 # 升级 git 版本
-git update-git-for-windows
+$ git update-git-for-windows
 ```
