@@ -8,8 +8,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "docs:sidebar": "node ./utils/index.js",
-    "docs:localStart": "yarn run docs:sidebar && yarn run docs:dev"
+    "docs:bar": "node ./utils/index.js",
+    "docs:localStart": "yarn run docs:bar && yarn run docs:dev"
   },
   "devDependencies": {
     "less": "^4.1.3",
