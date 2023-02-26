@@ -1,1 +1,0 @@
-import{_ as e,c as r,o,a as t}from"./app.0138297d.js";const u=JSON.parse('{"title":"BrowserRender","description":"","frontmatter":{},"headers":[],"relativePath":"zh/BrowserRender.md","lastUpdated":1671589947000}'),n={name:"zh/BrowserRender.md"},d=t("",2),s=[d];function c(a,i,p,l,_,S){return o(),r("div",null,s)}const h=e(n,[["render",c]]);export{u as __pageData,h as default};

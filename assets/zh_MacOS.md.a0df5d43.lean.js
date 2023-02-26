@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as e}from"./app.189153bf.js";const b=JSON.parse('{"title":"MacOS","description":"","frontmatter":{},"headers":[],"relativePath":"zh/MacOS.md","lastUpdated":1676895421000}'),l={name:"zh/MacOS.md"},t=e("",38),p=[t];function o(r,c,E,i,F,y){return a(),n("div",null,p)}const u=s(l,[["render",o]]);export{b as __pageData,u as default};
