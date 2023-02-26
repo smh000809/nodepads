@@ -22,6 +22,7 @@ fs.readdirSync(rootPath(rootDocs)).forEach(file => {
             text: text,
             collapsible: true,
             collapsed: true,
+            link: '/zh/' + file,
             items: [{
                 text: text,
                 link: '/zh/' + file,
