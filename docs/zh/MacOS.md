@@ -1,15 +1,19 @@
 # MacOS
 
-# [Homebrew中文官网](https://brew.sh/index_zh-cn)
+## [Homebrew中文官网](https://brew.sh/index_zh-cn)
 
 - 安装
+
 ```bash
 /usr/bin/ruby -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
 - 卸载
+
 ```bash
 sudo /usr/bin/ruby -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 ```
+
 - 换源
 
 简介
@@ -23,6 +27,7 @@ Homebrew 主要有四个部分组成: brew、homebrew-core 、homebrew-bottles�
 | homebrew-core | Homebrew 核心软件仓库 |
 | homebrew-bottles | Homebrew 预编译二进制软件包 |
 | homebrew-cask | 提供 macOS 应用和大型二进制文件 |
+
 - 替换为阿里源
 
 ```bash
@@ -75,6 +80,7 @@ $ brew update
 ```
 
 - 替换为中科大源
+
 ```bash
 # 替换各个源
 $ git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
@@ -94,6 +100,7 @@ $ brew update
 ```
 
 - 重置为官方源
+
 ```bash
 # 重置 brew.git 为官方源
 $ git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
@@ -135,10 +142,10 @@ $ brew update
 | `brew unlink package`           | 取消软件包符号链接       |
 | `brew doctor`                   | 检查系统是否存在问题     |
 
-# [Nodebrew](https://github.com/hokaccha/nodebrew)
+## [Nodebrew](https://github.com/hokaccha/nodebrew)
 
 ```bash
-$ rm -rf $HOME/.nodebrew # 卸载nodebrew
+rm -rf $HOME/.nodebrew # 卸载nodebrew
 ```
 
 | 命令                                    | 描述                |
@@ -157,7 +164,7 @@ $ rm -rf $HOME/.nodebrew # 卸载nodebrew
 | `nodebrew unalias <key>`              | Remove alias                                                        |
 | `nodebrew selfupdate`                 | Update nodebrew                                                     |
 
-# [MacPorts](https://www.macports.org/install.php)
+## [MacPorts](https://www.macports.org/install.php)
 
 | 命令                          | 备注 |
 | :---------------------------: | :----------------------------------------------------------: |
@@ -170,7 +177,7 @@ $ rm -rf $HOME/.nodebrew # 卸载nodebrew
 | `sudo port upgrade outdated`  | 更新所有软件包                                               |
 | `sudo port upgrade package`   | 更新指定软件包                                               |
 
-# nvm
+## nvm
 
 ```bash
 brew install nvm # 下载 nvm
@@ -188,21 +195,21 @@ brew uninstall nvm && cd ~ && rm -rf .nvm # 卸载nvm
 | `nvm alias default <version>` |           设置默认 node 版本           |
 |       `nvm deactivate`        |            解除当前版本绑定            |
 
-# Node
+## Node
 
 ```bash
 sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*} # pkg安装nodejs方式 卸载
 export NODE_OPTIONS=--openssl-legacy-provider # <<< open SSL 3.0 <<<  降级保证最新nodejs18正常运行
 ```
 
-# 更新了hosts文件立刻生效
+## 更新了hosts文件立刻生效
 
 ```bash
 sudo vim /etc/hosts
 sudo killall -HUP mDNSResponder
 ```
 
-# Mac VSCode更新失败问题
+## Mac VSCode更新失败问题
 
   ```bash
   # 1
@@ -213,7 +220,7 @@ sudo killall -HUP mDNSResponder
   xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code\ -\ Insiders.app/# 预览版软件包路径
   ```
 
-# Mac下Mysql
+## Mac下Mysql
 
 ```bash
 sudo /usr/local/mysql/support-files/mysql.server start # 启动服务
@@ -226,7 +233,7 @@ export PATH=${PATH}:${MYSQL_HOME}/support-files  # 添加
 source !/.bash_profile # 保存.bash_profile后使用 source 命令让 刚才的改动生效
 ```
 
-# Ruby Gem
+## Ruby Gem
 
 ```bash
 # 安装rvm

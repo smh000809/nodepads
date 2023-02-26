@@ -2,13 +2,13 @@
 
 [简介](http://www.flydean.com/indexeddb-kickoff/#简介)[IndexedDB简介](http://www.flydean.com/indexeddb-kickoff/#IndexedDB简介)[IndexedDB的使用](http://www.flydean.com/indexeddb-kickoff/#IndexedDB的使用)
 
-# 简介
+## 简介
 
 IndexedDB是一种在浏览器端存储数据的方式。既然称之为DB，是因为它丰富了客户端的查询方式，并且因为是本地存储，可以有效的减少网络对页面数据的影响。
 
 有了IndexedDB，浏览器可以存储更多的数据，从而丰富了浏览器端的应用类型。
 
-# IndexedDB简介
+## IndexedDB简介
 
 IndexedDB和传统的关系型数据不同的是，它是一个key-value型的数据库。
 
@@ -24,7 +24,7 @@ IndexedDB是一种 NoSQL 数据库，和关系型数据库不同的是，Indexed
 
 IndexedDB还有一个很重要的特点是其同源策略，每个源都会关联到不同的数据库集合，不同源是不允许访问其他源的数据库，从而保证了IndexedDB的安全性。
 
-# IndexedDB的使用
+## IndexedDB的使用
 
 这一节，我们将会以具体的例子来讲解如何使用IndexedDB。
 
@@ -72,9 +72,9 @@ open方法传入两个参数，第一个参数是数据库的名字，第二个�
 当你创建一个新的数据库或者升级一个现有的数据库版本的时候，将会触发一个onupgradeneeded事件，并在事件中传入IDBVersionChangeEvent，我们可以通过event.target.result来获取到IDBDatabase对象，然后通过这个对象来进行数据库的版本升级操作。如下所示：
 
 ```js
-// This event is only implemented in recent browsers   
-request.onupgradeneeded = function(event) { 
-  // Save the IDBDatabase interface 
+// This event is only implemented in recent browsers
+request.onupgradeneeded = function(event) {
+  // Save the IDBDatabase interface
   var db = event.target.result;
 
   // Create an objectStore for this database
@@ -151,7 +151,7 @@ request.onupgradeneeded = function(event) {
   // no two customers have the same email, so use a unique index.
   objectStore.createIndex("email", "email", { unique: true });
 
-  // Use transaction oncomplete to make sure the objectStore creation is 
+  // Use transaction oncomplete to make sure the objectStore creation is
   // finished before adding data into it.
   objectStore.transaction.oncomplete = function(event) {
     // Store values in the newly created objectStore.
@@ -359,7 +359,7 @@ index.get("Donna").onsuccess = function(event) {
 
 > 本文作者：flydean程序那些事
 >
-> 本文链接：http://www.flydean.com/indexeddb-kickoff/
+> 本文链接：<http://www.flydean.com/indexeddb-kickoff/>
 >
 > 本文来源：flydean的博客
 >

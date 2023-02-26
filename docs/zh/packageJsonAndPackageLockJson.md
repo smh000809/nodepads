@@ -169,10 +169,7 @@ lock-test{ "dependencies": { "A": "^1.1.0" }}
 ### package-lock.json 可能被意外更改的原因
 
 1. package.json 文件修改了
-2. 挪动了包的位置
-
-将部分包的位置从 dependencies 移动到 devDependencies 这种操作，虽然包未变，但是也会影响 `package-lock.json`，会将部分包的 dev 字段设置为 true
-
+2. 挪动了包的位置将部分包的位置从 dependencies 移动到 devDependencies 这种操作，虽然包未变，但是也会影响 `package-lock.json`，会将部分包的 dev 字段设置为 true
 3. registry 的影响
 
 经过实际使用发现，如果我们 node_modules 文件夹下的包中下载时，就算版本一样，安装源 `registry` 不同，执行 npm i 时也会修改 package-lock.json
@@ -183,16 +180,16 @@ lock-test{ "dependencies": { "A": "^1.1.0" }}
 
 一般情况下 `npm install` 是可以的，他能保证根据 `package-lock.json` 还原出开发时的 `node_modules`。
 
-但是为了防止出现刚刚提到的意外情况，除非涉及到对包的调整，其他情况下建议使用 `npm ci `来安装依赖，会避免异常的修改 `package-lock.json`，
+但是为了防止出现刚刚提到的意外情况，除非涉及到对包的调整，其他情况下建议使用 `npm ci`来安装依赖，会避免异常的修改 `package-lock.json`，
 
 持续集成工具中更推荐是用 `npm ci`，保证`构建环境的准确性`，**npm i 和 npm ci 的区别** 可以参考**官方文档 npm-ci**[2]
 
 ### 参考资料
 
-[1] 官方文档: *https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json*
+[1] 官方文档: *<https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json>*
 
-[2] 官方文档 npm-ci: *https://docs.npmjs.com/cli/v8/commands/npm-ci*
+[2] 官方文档 npm-ci: *<https://docs.npmjs.com/cli/v8/commands/npm-ci>*
 
-[3] 我的package-lock.json被谁改了？: *https://cloud.tencent.com/developer/article/1819632*
+[3] 我的package-lock.json被谁改了？: *<https://cloud.tencent.com/developer/article/1819632>*
 
-[4] npm install 生成的package-lock.json是什么文件？有什么用？: *https://www.zhihu.com/question/62331583/answer/275248129*
+[4] npm install 生成的package-lock.json是什么文件？有什么用？: *<https://www.zhihu.com/question/62331583/answer/275248129>*

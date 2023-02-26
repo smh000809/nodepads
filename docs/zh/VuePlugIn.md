@@ -1,6 +1,6 @@
 # VuePlugIn
 
-**一、UI组件及框架**
+## 一、UI组件及框架
 
 > 1. element - 饿了么出品的Vue2的web UI工具套件
 > 2. mint-ui - Vue 2的移动UI元素
@@ -24,8 +24,7 @@
 > 20. vue-tree - vue树视图组件
 > 21. vue-tabs - 多tab页轻型框架
 
-
-**二、滚动scroll组件**
+## 二、滚动scroll组件
 
 > 1. vue-scroller - Vonic UI的功能性组件
 > 2. vue-mugen-scroll - 无限滚动组件
@@ -38,8 +37,7 @@
 > 9. mint-loadmore - VueJS的双向下拉刷新组件
 > 10. vue-smoothscroll - smoothscroll的VueJS版本
 
-
-**三、slider组件**
+## 三、slider组件
 
 > 1. vue-awesome-swiper - vue.js触摸滑动组件
 > 2. vue-slick - 实现流畅轮播框的vue组件
@@ -53,7 +51,7 @@
 > 10. dd-vue-component - 订单来了的公共组件库
 > 11. vue-easy-slider - Vue 2.x的滑块组件
 
-**四、编辑器**
+## 四、编辑器
 
 > 1. markcook - 好看的markdown编辑器
 > 2. eme - 优雅的Markdown编辑器
@@ -65,7 +63,7 @@
 > 8. vue-simplemde - VueJS的Markdown编辑器组件
 > 9. vue-quill - vue组件构建quill编辑器
 
-**五、图表**
+## 五、图表
 
 > 1. vue-table - 简化数据表格
 > 2. vue-chartjs - vue中的Chartjs的封装
@@ -75,7 +73,7 @@
 > 6. chartjs - Vue Bulma的chartjs组件
 > 7. vue-chartkick - VueJS一行代码实现优美图表
 
-**六、日历**
+## 六、日历
 
 > 1. vue-calendar - 日期选择插件
 > 2. vue-datepicker - 日历和日期选择组件
@@ -88,31 +86,31 @@
 > 9. vue-date-picker - VueJS日期选择器组件
 > 10. vue-datepicker-simple - 基于vue的日期选择器
 
-**七、地址选择**
+## 七、地址选择
 
 > 1. vue-city - 城市选择器
 > 2. vue-region-picker - 选择中国的省份市和地区
 
-**八、地图**
+## 八、地图
 
 > 1. vue-amap - 基于Vue 2和高德地图的地图组件
 > 2. vue-google-maps - 带有双向数据绑定Google地图组件
 > 3. vue-baidu-map- 基于 Vue 2的百度地图组件库
 > 4. vue-cmap - Vue China map可视化组件
 
-**九、播放器**
+## 九、播放器
 
 > 1. vue-video-player - VueJS视频及直播播放器
 > 2. vue-video - Vue.js的HTML5视频播放器
 > 3. vue-music-master - vue手机端网页音乐播放器
 
-**十、文件上传**
+## 十、文件上传
 
 > 1. vue-upload-component - Vuejs文件上传组件
 > 2. vue-core-image-upload - 轻量级的vue上传插件
 > 3. vue-dropzone - 用于文件上传的Vue组件
 
-**十一、图片处理**
+## 十一、图片处理
 
 > 1. vue-lazyload-img - 移动优化的vue图片懒加载插件
 > 2. vue-image-crop-upload - vue图片剪裁上传组件
@@ -121,20 +119,20 @@
 > 5. vue-image-clip- 基于vue的图像剪辑组件
 > 6. vue-progressive-image - Vue的渐进图像加载插件
 
-**十二、提示**
+## 十二、提示
 
 > 1. vue-toast-mobile - VueJS的toast插件
 > 2. vue-msgbox - vuejs的消息框
 > 3. vue-tooltip - 带绑定信息提示的提示工具
 > 4. vue-verify-pop - 带气泡提示的vue校验插件
 
-**十三、进度条**
+## 十三、进度条
 
 > 1. vue-radial-progress - Vue.js放射性进度条组件
 > 2. vue-progressbar - vue轻量级进度条
 > 3. vue2-loading-bar - 最简单的仿Youtube加载条视图
 
-**十四、开发框架汇总**
+## 十四、开发框架汇总
 
 > 1. vue-admin - Vue管理面板框架
 > 2. electron-vue - Electron及VueJS快速启动样板
@@ -145,7 +143,7 @@
 > 7. Framework7-Vue - VueJS与Framework7结合
 > 8. vue-element-starter - vue启动页
 
-**十五、实用库汇总**
+## 十五、实用库汇总
 
 > 1. vuelidate - 简单轻量级的基于模块的Vue.js验证
 > 2. qingcheng - qingcheng主题
@@ -196,7 +194,7 @@
 > 47. Vue-Easy-Validator - 简单的表单验证
 > 48. vue-truncate-filter - 截断字符串的VueJS过滤器
 
-**十六、服务端**
+## 十六、服务端
 
 > 1. vue-ssr - 结合Express使用Vue2服务端渲染
 > 2. nuxt.js - 用于服务器渲染Vue app的最小化框架
@@ -204,7 +202,7 @@
 > 4. vue-easy-renderer - Nodejs服务端渲染
 > 5. express-vue - 简单的使用服务器端渲染vue.js
 
-**十七、辅助工具**
+## 十七、辅助工具
 
 > 1. DejaVue - Vuejs可视化及压力测试
 > 2. vue-generate-component - 轻松生成Vue js组件的CLI工具
@@ -213,7 +211,7 @@
 > 5. VuejsStarterKit - vuejs starter套件
 > 6. vue-multipage-cli - 简单的多页CLI
 
-**十八、应用实例**
+## 十八、应用实例
 
 > 1. pagekit - 轻量级的CMS建站系统
 > 2. vuedo - 博客平台
@@ -228,7 +226,7 @@
 > 11. vue-dashing-js - nuvo-dashing-js的fork
 > 12. rss-reader - 简单的rss阅读器
 
-**十九、Demo示例**
+## 十九、Demo示例
 
 > 1. eleme - 高仿饿了么app商家详情
 > 2. NeteaseCloudWebApp - 高仿网易云音乐的webapp
@@ -293,7 +291,7 @@
 > 61. v-notes - 简单美观的记事本
 > 62. vue-starter - VueJs项目的简单启动页
 
-**二十、其他实用插件汇总**
+## 二十、其他实用插件汇总
 
 > 1. vue-dragging- 使元素可以拖拽
 > 2. Vue.Draggable- 实现拖放和视图模型数组同步

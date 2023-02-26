@@ -211,8 +211,8 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
 
   ```javascript
   //<div id="test">
-  //	<p>whatever, blah blah.</p>
-  //	hello，I am a <em>Demo</em>
+  //<p>whatever, blah blah.</p>
+  //hello，I am a <em>Demo</em>
   //</div>
   $('test').textContent
   //whatever, blah blah.hello, I am a Demo
@@ -270,7 +270,7 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
 
 - 删除
 
-  **remove() **删除元素本身及所有子内容
+  **remove()**删除元素本身及所有子内容
 
   **removeChild()**保留当前容器，删除所有子内容
 
@@ -301,16 +301,12 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
    document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
    ```
 
-
-
 2. 修改 cookie：
 
    ```javascript
    // cookie 的 name 属性是唯一的，重新创建一样的 name 属性值可做到修改
    document.cookie="username=John Smith; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
    ```
-
-
 
 3. 删除 Cookie：
 
@@ -421,12 +417,12 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
   - keyup    按键回弹的时候触发
   - keypress 按键触底的时候触发
 
- - 表单事件：
+- 表单事件：
 
-   - 失去焦点 blur
-   - 获取焦点 focus
-   - submit 提交事件
-   - change 数据发生改变会触发的事件
+  - 失去焦点 blur
+  - 获取焦点 focus
+  - submit 提交事件
+  - change 数据发生改变会触发的事件
 
 - 拖拽事件
 
@@ -438,10 +434,6 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
   - ondragenter  有一个标签被拖入到事件范围内
   - ondragover   有一个标签在事件范围内,持续触发事件
   - ondragleave  有一个标签被拖出了事件范围
-
-
-
-
 
 总结：
 
@@ -559,16 +551,12 @@ history.go(-1)//负数时返回上一页，正数时返回下一页，
    Father.call(this)
    ```
 
-
-
 2. 原型链继承
 
    ```javascript
    Child.prototype=new Father();
    Child.prototype.constructor=Child;
    ```
-
-
 
 3. 组合
 
@@ -656,7 +644,7 @@ console.log(sup1.age); // 10继承了父类函数的属性
 
 // 5.寄生式继承
 function content(obj){
- 	function F(){}
+  function F(){}
     F.prototype = obj; // 继承了传入的参数
     return new F(); // 返回函数对象
 }
@@ -694,7 +682,6 @@ var sub1 = new Sub();
 // Sub的实例就继承了构造函数属性，父类实例，con的函数属性
 console.log(sub1.age)  // 10
 ```
-
 
 ## JS中的任务队列
 
@@ -740,11 +727,9 @@ Event Loop线程处理的任务被分为两类即 微任务（micro task）和�
 7. Promise 本身是同步任务，它的then catch finally 是异步任务。
 8. 定时器属于宏任务
 
-
 ## 触摸事件
 
-- [**点透问题**，**解决点透问题**](#点透问题，解决点透问题)
-
+- 点透问题，解决点透问题
 
 - touchstart ：用户开始触摸时触发
 
@@ -775,8 +760,6 @@ rotationAngle:0 // 旋转角度
 screenX:560 // 触摸点在屏幕中的横坐标
 screenY:175 // 触摸点在屏幕中的纵坐标
 ```
-
-
 
 ### 点透问题，解决点透问题
 
@@ -811,7 +794,7 @@ screenY:175 // 触摸点在屏幕中的纵坐标
        obj.addEventListener('touchmove', function (e) {
            isMove = true; // 看看是否有滑动，有滑动算拖拽，不算点击
        });
-   	obj.addEventListener('touchend', function (e) {
+    obj.addEventListener('touchend', function (e) {
            // 如果手指触摸和离开 时间小于150ms 算点击
            if (!isMove && (Date.now() - startTime) < 150) {
                callback && callback(); // 执行回调函数
@@ -825,8 +808,6 @@ screenY:175 // 触摸点在屏幕中的纵坐标
    });
    ```
 
-
-
 3. 使用插件。fastclick 插件解决300ms 延迟。
 
    ```js
@@ -835,19 +816,19 @@ screenY:175 // 触摸点在屏幕中的纵坐标
    <script>
        // winodw.onload = function(){}
        window.addEventListener("load", function () {
-       	FastClick.attach(document.body);
-   	}, false);
-   	var b = document.getElementById('b');
-   	var a = document.getElementById('a');
-   	b.ontouchstart = function () {
+        FastClick.attach(document.body);
+    }, false);
+    var b = document.getElementById('b');
+    var a = document.getElementById('a');
+    b.ontouchstart = function () {
            console.log("关闭b");
            this.style.display = 'none';
        }
-   	a.onclick = function () {
+    a.onclick = function () {
            console.log("a被点击！");
        }
-   	/**
-   	zepto.js
+    /**
+    zepto.js
        tap 轻击
        singleTap 单击
        doubleTap 双击
@@ -949,9 +930,9 @@ screenY:175 // 触摸点在屏幕中的纵坐标
    })();
    ```
 
-   ## JS交换两个变量的值
+## JS交换两个变量的值
 
-### 通用变量：
+### 通用变量
 
 ```javascript
 var a = 100;
@@ -1007,7 +988,7 @@ b = a[0];
 a = a[1];
 ```
 
-### 6.
+### 6
 
 ```js
 a = [b, b = a][0];
@@ -1015,7 +996,7 @@ a = [b, b = a][0];
 b = [a, a = b][0];
 ```
 
-### 7.
+### 7
 
 ```js
 [a, b] = [b, a];
@@ -1028,10 +1009,9 @@ console.log(`a：${a}；b：${b}`);
 // 每个值都是 a：999；b：100
 ```
 
-
 ## JS数组去重
 
-### <font>利用ES6 Set去重（ES6中最常用）</font>
+### 利用ES6 Set去重（ES6中最常用）
 
 ```javascript
 function unique (arr) {
@@ -1042,11 +1022,11 @@ console.log(unique(arr))
  //[1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {}, {}]
 ```
 
-不考虑兼容性，此方法代码最少。<span alt="shake">缺点</span>：无法去掉“{}”空对象
+不考虑兼容性，此方法代码最少。缺点</span>：无法去掉“{}”空对象
 
 ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
 
-### <font>利用for嵌套for，然后splice去重</font>
+### 利用for嵌套for，然后splice去重
 
 ```javascript
 function unique(arr){
@@ -1065,9 +1045,9 @@ var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, n
     //[1, "true", 15, false, undefined, NaN, NaN, "NaN", "a", {…}, {…}]
 ```
 
-外层循环元素，内层循环时比较值。值相同时，则删去这个值。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重，null会直接去掉</span>
+外层循环元素，内层循环时比较值。值相同时，则删去这个值。缺点：NaN，{} 无法去重，null会直接去掉
 
-### <font>利用indexOf去重</font>
+### 利用indexOf去重
 
 ```javascript
 function unique(arr) {
@@ -1088,9 +1068,9 @@ console.log(unique(arr))
 // [1, "true", true, 15, false, undefined, null, NaN, NaN, "NaN", 0, "a", {…}, {…}]
 ```
 
-新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重</span>
+新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。缺点：NaN，{} 无法去重</span>
 
-### <font>利用sort()去重</font>
+### 利用sort()去重
 
 ```javascript
 function unique(arr) {
@@ -1112,9 +1092,9 @@ function unique(arr) {
 // [0, 1, 15, "NaN", NaN, NaN, {…}, {…}, "a", false, null, true, "true", undefined]
 ```
 
-利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。<span alt="shake">缺点</span>：<span alt="underline">NaN，{} 无法去重</span>
+利用sort()排序方法，然后根据排序后的结果进行遍历及相邻元素比对。缺点：NaN，{} 无法去重</span>
 
-### <font style="color:red;font-weight:900;">利用hasOwnProperty</font>[^所有的都去重了]
+### 利用hasOwnProperty[^所有的都去重了]
 
 ```javascript
 function unique(arr) {
@@ -1128,9 +1108,9 @@ function unique(arr) {
 //[1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {…}]   //所有的都去重了
 ```
 
-<code>hasOwnProperty()</code> 方法用来检测一个属性是否是对象的自有属性，而不是从原型链继承的[^如果该属性是自有属性，那么返回 true，否则返回 false。注：不会检测对象的原型链，只会检测当前对象本身，只有当前对象本身存在该属性时才返回 true]
+`hasOwnProperty()` 方法用来检测一个属性是否是对象的自有属性，而不是从原型链继承的[^如果该属性是自有属性，那么返回 true，否则返回 false。注：不会检测对象的原型链，只会检测当前对象本身，只有当前对象本身存在该属性时才返回 true]
 
-### <font>利用filter</font>
+### 利用filter
 
 ```javascript
 function unique(arr) {
@@ -1144,9 +1124,9 @@ function unique(arr) {
 //[1, "true", true, 15, false, undefined, null, "NaN", 0, "a", {…}, {…}]
 ```
 
-<span alt="shake">缺点：</span><span alt="underline">NaN 直接去掉，{} 无法去重</span>
+缺点：NaN 直接去掉，{} 无法去重
 
-### <font>利用递归去重</font>
+### 利用递归去重
 
 ```javascript
 function unique(arr) {
@@ -1173,18 +1153,18 @@ console.log(unique(arr))
 //[1, "a", "true", true, 15, false, 1, {…}, null, NaN, NaN, "NaN", 0, "a", {…}, undefined]
 ```
 
-<span alt="shake">缺点：</span><span alt="underline">NaN，{} 无法去重</span>
+缺点：NaN，{} 无法去重
 
-### <font>[...new Set(arr)]</font>
+### [...new Set(arr)]
 
 ```javascript
 var arr = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,'NaN', 0, 0, 'a', 'a',{},{}];
 console.log([...new Set(arr)])
 ```
 
-<span alt="shake">优点：</span><span alt="underline">代码一句话。</span><span alt="shake">缺点：</span><span alt="underline">{} 无法去重</span>
+优点：代码一句话。缺点：{} 无法去重
 
-### <font>数组对象根据字段去重</font>
+### 数组对象根据字段去重
 
 ```js
 const uniqueArrayObject = (arr = [], key = 'id') => {
@@ -1213,8 +1193,6 @@ const uniqueArrayObject = (arr = [], key = 'id') => {
 
 所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。
 
-
-
 ```js
 var xhr = new XMLHttpRequest();
 ```
@@ -1223,8 +1201,6 @@ var xhr = new XMLHttpRequest();
 > var xhr=new ActiveXObject("Microsoft.XMLHTTP");
 
 如需将请求发送到服务器，我们使用 `XMLHttpRequest` 对象的 `open()` 和 `send()` 方法：
-
-
 
 ```js
 var xhr = new XMLHttpRequest();

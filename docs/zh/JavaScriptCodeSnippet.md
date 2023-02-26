@@ -466,8 +466,8 @@ detectDeviceType(); // "Mobile" or "Desktop"
 ```js
 //去除千分位中的‘，’ 保留.00
 function delcommafy(num){
-	num=num.replace(/,/gi,'');
-	return num;
+ num=num.replace(/,/gi,'');
+ return num;
 }
 // 千分位转数字 //去除千分位中的‘，’ 和 ‘.00’
 const changeNumber = (val) => {
@@ -547,7 +547,7 @@ isSameDate(new Date(2010, 10, 20), new Date(2010, 10, 20)); // true
 ## 比较两个对象，以确定第一个对象是否包含与第二个对象相同的属性值
 
 ```js
-onst matches = (obj, source) => 
+onst matches = (obj, source) =>
     Object.keys(source).every(key => obj.hasOwnProperty(key) && obj[key] === source[key]);
 
 matches({
@@ -789,11 +789,11 @@ export function _toFixed3(num, max = 2, maxNum = "T") {
 }
 ```
 
-**⚠️ v-model不要使用（.number）修饰符   比如：v.model.number**
+## ⚠️ v-model不要使用（.number）修饰符   比如：v.model.number
 
 ```vue
 <template>
-	<el-input v-model="row.paymentAmount" @keyup.native="row.paymentAmount=_toFixed3(row.paymentAmount,2)"/>
+ <el-input v-model="row.paymentAmount" @keyup.native="row.paymentAmount=_toFixed3(row.paymentAmount,2)"/>
 </template>
 <script>
     import {_toFixed3} from "@/utils";
@@ -1092,18 +1092,6 @@ export function regSplicE(v, val) {
 
 ```html
 <input type="text" onkeyup="this.value=this.value.replace(/^[^!@#$%^&*()-=+]/g,'')">
-```
-
-## 只能输入数字和英文逗号
-
-```html
-<input type="text"  onkeyup="this.value=this.value.replace(/[^\d\,]/g,'')">
-```
-
-## 文本框只能输入数字代码(小数点也不能输入)
-
-```html
-<input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
 ```
 
 ## 只能输入数字,能输小数点

@@ -2,9 +2,9 @@
 
 [![img](https://profile.csdnimg.cn/5/F/9/2_m0_68402487)](https://blog.csdn.net/m0_68402487)
 
-# vue项目中的http.js（请求封装）
+## vue项目中的http.js（请求封装）
 
-# 第一个版本
+### 第一个版本
 
 vue+vant
 
@@ -75,11 +75,9 @@ const http = {
 export default http
 ```
 
-# 第二个版本
+### 第二个版本
 
 vue+element-ui
-
-
 
 ```javascript
 import axios from 'axios'
@@ -336,11 +334,7 @@ export default new Vuex.Store({
 })
 ```
 
-
-
-
-
-# 第三个版本
+### 第三个版本
 
 ```javascript
 import axios from 'axios'

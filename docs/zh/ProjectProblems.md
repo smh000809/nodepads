@@ -1,13 +1,11 @@
 # ProjectProblems
 
-# elementui table 树形 勾选父节点时勾选全部子节点
+## elementui table 树形 勾选父节点时勾选全部子节点
 
 需要加以下三个方法
 @select="selectChange"
 @select-all="selectAllChange"
 @selection-change="selectionChangeHandler"
-
-
 
 ```vue
 <el-table
@@ -380,7 +378,7 @@ export default {
 </style>
 ```
 
-# dialog可拖拽移动
+## dialog可拖拽移动
 
 ```vue
 <script>
@@ -408,15 +406,16 @@ export default {
           }
         }
       }
-    },    
+    },
   }
 </script>
 ```
 
-# Element UI 低版本使用 el-cascader 数据量大造成的卡顿[^13.2]
+## Element UI 低版本使用 el-cascader 数据量大造成的卡顿[^13.2]
+
 ```vue
 <template>
-	<el-cascader @visible-change="visibleChange"></el-cascader>
+ <el-cascader @visible-change="visibleChange"></el-cascader>
 </template>
 <script>
 export default {
@@ -427,7 +426,7 @@ export default {
         Array.from($el).map((el) => el.removeAttribute('aria-owns'));
       })
     },
-	}
+ }
 }
 </script>
 ```

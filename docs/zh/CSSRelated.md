@@ -26,7 +26,7 @@
 ```css
 <!-- 这个class名指的是结尾添加的空标签，或者在尾部标签加这个名字 -->
 .clearfloat {
-	clear:both;
+ clear:both;
 }
 ```
 
@@ -37,7 +37,7 @@
 ```css
 <!-- 这个class名指的是需要清除浮动的父级 -->
 .div {
-	height:200px;<!-- 子集多少这里给多少 -->
+ height:200px;<!-- 子集多少这里给多少 -->
 }
 ```
 
@@ -48,7 +48,7 @@
 ````css
 <!-- 这个class名指的是需要清除浮动的父级 -->
 .div {
-	overflow:hidden;
+ overflow:hidden;
 }
 ````
 
@@ -77,7 +77,6 @@
 解释：将div属性变成表格，没有优点.
 
 ❤️父级div定义zoom:1来解决IE浮动问题，结尾处加br标签clear:both;
-
 
 ## CSS命名规则
 
@@ -263,27 +262,27 @@
 
 版权：copyright
 
-#### (四)class的命名:
+#### (四)class的命名
 
-##### (1)颜色：使用颜色的名称或者16进制代码，如：
+##### (1)颜色：使用颜色的名称或者16进制代码，如
 
 ```css
 .red { color: red; } .f60 { color: #f60; } .ff8600 { color: #ff8600; }
 ```
 
-##### (2)字体大小，直接使用“font+字体大小”作为名称，如：
+##### (2)字体大小，直接使用“font+字体大小”作为名称，如
 
 ```css
 .font12px { font-size: 12px; } .font9pt {font-size: 9pt; }
 ```
 
-##### (3)对齐样式，使用对齐目标的英文名称，如：
+##### (3)对齐样式，使用对齐目标的英文名称，如
 
 ```css
 .left { float:left; } .bottom { float:bottom; }
 ```
 
-##### (4)标题栏样式，使用“类别+功能”的方式命名，如：
+##### (4)标题栏样式，使用“类别+功能”的方式命名，如
 
 ```css
 .barnews { } .barproduct { }

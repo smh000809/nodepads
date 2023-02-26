@@ -10,8 +10,6 @@ Git 一共有3个配置文件：
 2. 全局配置文件：Mac 系统在 `~/.gitconfig`，Windows 系统在 `C:\Users\<用户名>\.gitconfig`。
 3. 系统级的配置文件：在 Git 的安装目录下（Mac 系统下安装目录在 `/usr/local/git`）的 `etc` 文件夹中的 `gitconfig`。
 
-
-
 ```bash
 # 查看配置信息
 # --local：仓库级，--global：全局级，--system：系统级
@@ -234,8 +232,6 @@ $ git fetch <远程主机名> <分支名>
 
 合并分支。
 
-
-
 ```ruby
 # 把指定的分支合并到当前所在的分支下
 $ git merge <分支名称>
@@ -244,8 +240,6 @@ $ git merge <分支名称>
 ## git diff
 
 比较版本之间的差异。
-
-
 
 ```ruby
 # 比较当前文件和暂存区中文件的差异，显示没有暂存起来的更改
