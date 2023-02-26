@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.42213745.js";const u=JSON.parse('{"title":"vueHttp","description":"","frontmatter":{},"headers":[],"relativePath":"zh/vueHttp.md","lastUpdated":1671589947000}'),p={name:"zh/vueHttp.md"},o=l("",19),e=[o];function F(r,c,t,y,i,b){return a(),n("div",null,e)}const m=s(p,[["render",F]]);export{u as __pageData,m as default};
