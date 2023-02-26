@@ -1,23 +1,13 @@
 console.clear();
 const fs = require("fs");
-const config = require("./__config__");
-/* 项目在本地的路径 */
-const rootProject = config["rootProject"];
-/* 不需要生成侧边栏的文件名 */
-const ignoreFile = config["ignoreFile"];
 /* 映射路径 */
-const rootPath = path => rootProject + path;
-/* 文档库的位置 */
-const rootDocs = config["rootDocs"];
-/* 文件生成的位置(基于根目录) */
-const writeFile = config["writeFile"];
+const rootPath = path => "/Users/shimenghao/Documents/code/nodepads" + path;
 /* 项目的名称 */
 let notepadToc = [];
-fs.readdirSync(rootPath(rootDocs)).forEach(file => {
-  if (ignoreFile.includes(file.replace(/.md/, ""))) return;
-  console.log(file);
-  if (/.md$/.test(file)) {
-    let text = file.replace(/.md/, "");
+fs.readdirSync(rootPath("/docs/zh")).forEach(file => {
+  if (["README", "index", "MiaoGuai"].includes(file.replace(/.md$/i, ""))) return;
+  if (/.md$/i.test(file)) {
+    let text = file.replace(/.md$/i, "");
     notepadToc.push({
       text: text,
       collapsible: true,
@@ -32,18 +22,28 @@ fs.readdirSync(rootPath(rootDocs)).forEach(file => {
     });
   }
 });
-const sidebarContent = JSON.parse(JSON.stringify("module.exports=" + JSON.stringify(notepadToc)));
-console.log("sidebar生成成功:" + sidebarContent);
-console.log("sidebar文件位置:" + rootPath(writeFile));
-fs.writeFile(rootPath(writeFile), sidebarContent, function (err) {
-  if (err) throw err;
-  console.log("\033[42;30m DONE \033[40;32m File is created successfully.");
-});
 
-const navbarContent = JSON.parse(JSON.stringify("module.exports=[{text: '首页',link: '/',},{text:'笔记📒',items:" + JSON.stringify(notepadToc) + "}]"));
-console.log("navbar生成成功:" + navbarContent);
-console.log("navbar文件位置:" + rootPath("/docs/.vitepress/nav.js"));
-fs.writeFile(rootPath("/docs/.vitepress/nav.js"), navbarContent, function (err) {
-  if (err) throw err;
-  console.log("\033[42;30m DONE \033[40;32m File is created successfully.");
+const create = (content, path, name) => {
+  content = JSON.parse(JSON.stringify(content));
+  console.log(name + "文件生成成功:" + content);
+  console.log(name + "文件生成位置:" + rootPath(path));
+  fs.writeFile(rootPath(path), content, function (err) {
+    if (err) throw err;
+    console.log("\033[42;30m DONE \033[40;32m File is created successfully.");
+  });
+};
+
+[
+  {
+    name: "sidebar",
+    content: `module.exports=${JSON.stringify(notepadToc)}`,
+    path: "/docs/.vitepress/sidebar.js",
+  },
+  {
+    name: "navbar",
+    content: `module.exports=[{text: '首页',link: '/',},{text:'笔记📒',items:${JSON.stringify(notepadToc)}}]`,
+    path: "/docs/.vitepress/nav.js",
+  },
+].forEach(item => {
+  create(item.content, item.path, item.name);
 });
