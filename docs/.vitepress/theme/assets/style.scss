@@ -3,6 +3,10 @@
     border-radius: $borderRadius;
 }
 
+body {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 // 首页头像
 #VPContent {
     .VPHome {
