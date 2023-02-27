@@ -143,3 +143,4 @@ docs/.vitepress/cache
 docs/local
 
 .obsidian
+.idea
