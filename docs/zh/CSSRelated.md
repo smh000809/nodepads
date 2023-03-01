@@ -5,7 +5,7 @@
 ❤️❤️❤️父级div定义伪类：after和zoom;
 
 ```css
-<!-- 这个class名指的是需要清除浮动的父级 -->
+/* 这个class名指的是需要清除浮动的父级 */
 .clearfloat:after {
     display:block;
     clear:both;
@@ -24,7 +24,7 @@
 ❤️❤️❤️在结尾处添加空div标签clear:both;
 
 ```css
-<!-- 这个class名指的是结尾添加的空标签，或者在尾部标签加这个名字 -->
+/* 这个class名指的是结尾添加的空标签，或者在尾部标签加这个名字 */
 .clearfloat {
  clear:both;
 }
@@ -35,9 +35,9 @@
 ❤️❤️父级div定义height;
 
 ```css
-<!-- 这个class名指的是需要清除浮动的父级 -->
+/* 这个class名指的是需要清除浮动的父级 */
 .div {
- height:200px;<!-- 子集多少这里给多少 -->
+ height:200px;/* 子集多少这里给多少 */
 }
 ```
 
@@ -46,7 +46,7 @@
 ❤️❤️❤️父级div定义overflow:hidden;
 
 ````css
-<!-- 这个class名指的是需要清除浮动的父级 -->
+/* 这个class名指的是需要清除浮动的父级 */
 .div {
  overflow:hidden;
 }
@@ -57,7 +57,7 @@
 ❤️父级div定义overflow:auto;
 
 ```css
-<!-- 这个class名指的是需要清除浮动的父级 -->
+/* 这个class名指的是需要清除浮动的父级 */
 .div {
     overflow:auto;
 }
@@ -68,7 +68,7 @@
 ❤️父级div定义display:table;
 
 ```css
-<!-- 这个class名指的是需要清除浮动的父级 -->
+/* 这个class名指的是需要清除浮动的父级 */
 .div {
     display:table;
 }
