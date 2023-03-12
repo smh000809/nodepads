@@ -13,9 +13,9 @@
   },
   "devDependencies": {
     "less": "^4.1.3",
-    "sass": "^1.58.3",
+    "sass": "^1.59.2",
     "stylus": "^0.59.0",
-    "vitepress": "^1.0.0-alpha.49",
+    "vitepress": "^1.0.0-alpha.52",
     "vue": "^3.2.47"
   }
 }
