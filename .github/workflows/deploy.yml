@@ -18,6 +18,9 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
 
+      - name: Generative navigation
+        run: yarn docs:bar
+
       - name: Build
         run: yarn docs:build
 
