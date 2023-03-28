@@ -36,7 +36,7 @@ const create = (content, path, name) => {
 [
   {
     name: "sidebar",
-    content: `module.exports=${JSON.stringify(notepadToc)}`,
+    content: `module.exports={}`,
     path: "/docs/.vitepress/sidebar.js",
   },
   {
