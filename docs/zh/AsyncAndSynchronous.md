@@ -9,7 +9,7 @@
 我们平时最常使用的就是这种同步加载形式：
 
 ```js
-<script src=".http://yourdomain.com/script.js"></script>
+<script src="http://yourdomain.com/script.js"></script>
 ```
 
 同步模式，又称阻塞模式，会阻止浏览器的后续处理，停止了后续的解析，因此停止了后续的文件加载（如图像）、渲染、代码执行。

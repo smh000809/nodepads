@@ -232,32 +232,25 @@ Vue.prototype.$http = http;
 
 ②vue文件中使用
 
-```html
+```vue
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+  <div id="app">
+      <router-view></router-view>
+  </div>
 </template>
 <script>
-    export default {
-    name: 'app',
-    components: {
-},
-    created() {
-    this.$http.post("/cmdb-base/instanceAsst/findAllInstanceAsstListApp", this.dataForm).then(({ data: res }) => {
+export default {
+  name: 'app',
+	created() {
+  	this.$http.post("/cmdb-base/instanceAsst/findAllInstanceAsstListApp", this.dataForm).then(({ data: res }) => {
     if (res.code != "S1A00000") {
-    this.groupList = []
-    return this.$toast.fail(res.msg)
-}
-    this.groupList = res.data || []
-}).finally(() => {
-    this.dataLoading = false
-})
-}
+    	this.groupList = []
+    	return this.$toast.fail(res.msg)
+  	}
+	  this.groupList = res.data || []
+	})
 }
 </script>
-<style>
-</style>
 ```
 
  ③ 其他js中的使用，比如vuex的store.js
