@@ -1,5 +1,6 @@
 const nav = require("./nav");
 const sidebar = require("./sidebar");
+const packageInfo = require("../../package.json");
 
 export default {
   lang: "zh-CN",
@@ -35,8 +36,8 @@ export default {
     }, // 编辑链接
     socialLinks: [{icon: "github", link: "https://github.com/FTZANKE/nodepads"}], // 社交链接
     footer: {
-      message: "Released under the MIT License.",
-      copyright: "",
+      message: "version " + packageInfo.version,
+      copyright: "Released under the MIT License. © 2023 AHao.",
     }, // 页脚
     // carbonAds: {
     // code: 'CEBDT27Y',
