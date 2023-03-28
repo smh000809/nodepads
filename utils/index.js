@@ -1,7 +1,7 @@
 console.clear();
 const fs = require("fs");
 /* 映射路径 */
-const rootPath = path => "/Users/shimenghao/Documents/code/nodepads" + path;
+const rootPath = path => __dirname.replace(/\/utils$/, "") + path;
 /* 项目的名称 */
 let notepadToc = [];
 fs.readdirSync(rootPath("/docs/zh")).forEach(file => {
