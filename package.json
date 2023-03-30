@@ -9,7 +9,8 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "docs:bar": "node ./utils/index.js",
-    "docs:localStart": "yarn run docs:bar && yarn run docs:dev"
+    "docs:localStart": "yarn run docs:bar && yarn run docs:dev",
+    "huawei:build": "yarn run docs:build"
   },
   "devDependencies": {
     "sass": "^1.60.0",
