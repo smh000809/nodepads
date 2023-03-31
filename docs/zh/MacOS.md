@@ -1,6 +1,6 @@
 # MacOS
 
-## [Homebrew中文官网](https://brew.sh/index_zh-cn)
+## [Homebrew 中文官网](https://brew.sh/index_zh-cn)
 
 - 安装
 
@@ -21,12 +21,12 @@ Homebrew 是一款自由及开放源代码的软件包管理系统，用以简�
 
 Homebrew 主要有四个部分组成: brew、homebrew-core 、homebrew-bottles、homebrew-cask。
 
-| 名称 | 说明 |
-| :--:| :--: |
-| brew | Homebrew 源代码仓库 |
-| homebrew-core | Homebrew 核心软件仓库 |
-| homebrew-bottles | Homebrew 预编译二进制软件包 |
-| homebrew-cask | 提供 macOS 应用和大型二进制文件 |
+|       名称       |              说明               |
+| :--------------: | :-----------------------------: |
+|       brew       |       Homebrew 源代码仓库       |
+|  homebrew-core   |      Homebrew 核心软件仓库      |
+| homebrew-bottles |   Homebrew 预编译二进制软件包   |
+|  homebrew-cask   | 提供 macOS 应用和大型二进制文件 |
 
 - 替换为阿里源
 
@@ -123,24 +123,24 @@ $ vi ~/.bash_profile
 $ brew update
 ```
 
-| 命令 | 描述  |
-| :----------------------------: | :----------------------: |
-| `brew update`                   | 更新 Homebrew            |
-| `brew search package`           | 搜索软件包               |
-| `brew install package`          | 安装软件包               |
-| `brew uninstall package`        | 卸载软件包               |
-| `brew upgrade`                  | 升级所有软件包           |
-| `brew upgrade package`          | 升级指定软件包           |
-| `brew list`                     | 列出已安装的软件包列表   |
-| `brew services command package` | 管理 brew 安装软件包     |
-| `brew services list`            | 列出 brew 管理运行的服务 |
-| `brew info package`             | 查看软件包信息           |
-| `brew deps package`             | 列出软件包的依赖关系     |
-| `brew help`                     | 查看帮助                 |
-| `brew cleanup`                  | 清除过时软件包           |
-| `brew link package`             | 创建软件包符号链接       |
-| `brew unlink package`           | 取消软件包符号链接       |
-| `brew doctor`                   | 检查系统是否存在问题     |
+|              命令               |           描述           |
+| :-----------------------------: | :----------------------: |
+|          `brew update`          |      更新 Homebrew       |
+|      `brew search package`      |        搜索软件包        |
+|     `brew install package`      |        安装软件包        |
+|    `brew uninstall package`     |        卸载软件包        |
+|         `brew upgrade`          |      升级所有软件包      |
+|     `brew upgrade package`      |      升级指定软件包      |
+|           `brew list`           |  列出已安装的软件包列表  |
+| `brew services command package` |   管理 brew 安装软件包   |
+|      `brew services list`       | 列出 brew 管理运行的服务 |
+|       `brew info package`       |      查看软件包信息      |
+|       `brew deps package`       |   列出软件包的依赖关系   |
+|           `brew help`           |         查看帮助         |
+|         `brew cleanup`          |      清除过时软件包      |
+|       `brew link package`       |    创建软件包符号链接    |
+|      `brew unlink package`      |    取消软件包符号链接    |
+|          `brew doctor`          |   检查系统是否存在问题   |
 
 ## [Nodebrew](https://github.com/hokaccha/nodebrew)
 
@@ -148,34 +148,34 @@ $ brew update
 rm -rf $HOME/.nodebrew # 卸载nodebrew
 ```
 
-| 命令                                    | 描述                |
-|:-------------------------------------:|:-------------------------------------------------------------------:|
-| `nodebrew help`                       | 显示此消息                                                   |
-| `nodebrew install <version>`          | Download and install `<version>` (from binary)                      |
-| `nodebrew compile <version>`          | Download and install `<version>` (from source)                      |
-| `nodebrew install-binary <version>`   | Alias of `install` (For backward compatibility)                     |
-| `nodebrew uninstall <version>`        | Uninstall `<version>`                                               |
-| `nodebrew use <version>`              | Use `<version>`                                                     |
-| `nodebrew lis`                        | 已安装版本列表                                             |
-| `nodebrew ls`                         | Alias for `list`                                                    |
-| `nodebrew ls-remote`                  | 列出远程版本                                                |
-| `nodebrew ls-all`                     | 列出远程版本和已安装版本                                  |
-| `nodebrew alias <key> <value>`        | Set alias                                                           |
-| `nodebrew unalias <key>`              | Remove alias                                                        |
-| `nodebrew selfupdate`                 | Update nodebrew                                                     |
+|                命令                 |                      描述                       |
+| :---------------------------------: | :---------------------------------------------: |
+|           `nodebrew help`           |                   显示此消息                    |
+|    `nodebrew install <version>`     | Download and install `<version>` (from binary)  |
+|    `nodebrew compile <version>`     | Download and install `<version>` (from source)  |
+| `nodebrew install-binary <version>` | Alias of `install` (For backward compatibility) |
+|   `nodebrew uninstall <version>`    |              Uninstall `<version>`              |
+|      `nodebrew use <version>`       |                 Use `<version>`                 |
+|           `nodebrew lis`            |                 已安装版本列表                  |
+|            `nodebrew ls`            |                Alias for `list`                 |
+|        `nodebrew ls-remote`         |                  列出远程版本                   |
+|          `nodebrew ls-all`          |            列出远程版本和已安装版本             |
+|   `nodebrew alias <key> <value>`    |                    Set alias                    |
+|      `nodebrew unalias <key>`       |                  Remove alias                   |
+|        `nodebrew selfupdate`        |                 Update nodebrew                 |
 
 ## [MacPorts](https://www.macports.org/install.php)
 
-| 命令                          | 备注 |
-| :---------------------------: | :----------------------------------------------------------: |
-| `sudo port selfupdate`        | 更新MacPorts程序级源列表                                     |
-| `port search package`         | 搜索软件包                                                   |
-| `sudo port install package`   | 安装软件包                                                   |
-| `sudo port uninstall package` | 卸载软件包                                                   |
-| `port list installed`         | 查看已安装的软件包                                           |
-| `port outdated`               | 查看有哪些软件包需要更新                                     |
-| `sudo port upgrade outdated`  | 更新所有软件包                                               |
-| `sudo port upgrade package`   | 更新指定软件包                                               |
+|             命令              |            备注            |
+| :---------------------------: | :------------------------: |
+|    `sudo port selfupdate`     | 更新 MacPorts 程序级源列表 |
+|     `port search package`     |         搜索软件包         |
+|  `sudo port install package`  |         安装软件包         |
+| `sudo port uninstall package` |         卸载软件包         |
+|     `port list installed`     |     查看已安装的软件包     |
+|        `port outdated`        |  查看有哪些软件包需要更新  |
+| `sudo port upgrade outdated`  |       更新所有软件包       |
+|  `sudo port upgrade package`  |       更新指定软件包       |
 
 ## nvm
 
@@ -202,25 +202,25 @@ sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*
 export NODE_OPTIONS=--openssl-legacy-provider # <<< open SSL 3.0 <<<  降级保证最新nodejs18正常运行
 ```
 
-## 更新了hosts文件立刻生效
+## 更新了 hosts 文件立刻生效
 
 ```bash
 sudo vim /etc/hosts
 sudo killall -HUP mDNSResponder
 ```
 
-## Mac VSCode更新失败问题
+## Mac VSCode 更新失败问题
 
-  ```bash
-  # 1
-  sudo chown -R $USER ~/Library/Caches/com.microsoft.VSCode.ShipIt;# 输入密码
-  # 2
-  xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code.app;# 稳定版软件包路径
-  # or
-  xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code\ -\ Insiders.app/# 预览版软件包路径
-  ```
+```bash
+# 1
+sudo chown -R $USER ~/Library/Caches/com.microsoft.VSCode.ShipIt;# 输入密码
+# 2
+xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code.app;# 稳定版软件包路径
+# or
+xattr -dr com.apple.quarantine /Applications/Visual\ Studio\ Code\ -\ Insiders.app/# 预览版软件包路径
+```
 
-## Mac下Mysql
+## Mac 下 Mysql
 
 ```bash
 sudo /usr/local/mysql/support-files/mysql.server start # 启动服务
@@ -254,13 +254,13 @@ $ gem sources --remove  https://gems.ruby-china.org/
 $gem sources --add  https://gems.ruby-china.com/
 ```
 
-| 命令                          | 备注                                  |
-| :---------------------------: | :------------------------------------: |
-| `gem install mygem`           | 安装                   |
-| `gem uninstall mygem`         | 卸载                                   |
-| `gem list --local`            | 列出已安装的gem                         |
-| `gem list --remote`           | 列出可用的gem                 |
-| `gem rdoc --all`              | 为所有的gems创建RDoc文档                |
-| `gem fetch mygem`             | 下载一个gem，但不安装                     |
-| `gem search STRING --remote`  | 从可用的gem中搜索                     |
-| `nvm deactivate`              | 解除当前版本绑定                       |
+|             命令             |             备注             |
+| :--------------------------: | :--------------------------: |
+|     `gem install mygem`      |             安装             |
+|    `gem uninstall mygem`     |             卸载             |
+|      `gem list --local`      |       列出已安装的 gem       |
+|     `gem list --remote`      |        列出可用的 gem        |
+|       `gem rdoc --all`       | 为所有的 gems 创建 RDoc 文档 |
+|      `gem fetch mygem`       |    下载一个 gem，但不安装    |
+| `gem search STRING --remote` |     从可用的 gem 中搜索      |
+|       `nvm deactivate`       |       解除当前版本绑定       |

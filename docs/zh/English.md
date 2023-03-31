@@ -9,7 +9,7 @@
 - Self-Timer 定时功能
 - Capture Text (OCR) 捕获文本(OCR)
 - Record Screen 记录屏幕
-- Record GIF 记录GIF
+- Record GIF 记录 GIF
 - Record Video 记录视频
 - Hide DesKtop icons 隐藏桌面图标
 - Pin to the Screen 固定在屏幕上

@@ -2,77 +2,82 @@
 
 [![img](https://profile.csdnimg.cn/5/F/9/2_m0_68402487)](https://blog.csdn.net/m0_68402487)
 
-## vue项目中的http.js（请求封装）
+## vue 项目中的 http.js（请求封装）
 
 ### 第一个版本
 
 vue+vant
 
 ```javascript
-import axios from 'axios'
-import { Toast } from 'vant';
-import store from '@/store/index.js'
-import router from '@/router'
-import {getToken} from '@/libs/util'
+import axios from "axios";
+import {Toast} from "vant";
+import store from "@/store/index.js";
+import router from "@/router";
+import {getToken} from "@/libs/util";
 const instance = axios.create({
   timeout: 105000,
   headers: {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
-})
+    "Content-Type": "application/json; charset=utf-8",
+  },
+});
 /**
  * 请求拦截
  */
-instance.interceptors.request.use(async config => {
-  if (getToken()) {
-    // 如果是CAS平台
-    // 在请求头部增加 切换的租户 字段（User-Information）发给后台
-    config.headers.Authorization = getToken()
-    // request.headers['Tenant_id'] = getCurrentTenantId()
-    config.headers['Tenant-ID'] = localStorage.getItem('tenantId')
-    if (config.url.indexOf('login') === -1 && config.url.indexOf('refreshToken') === -1 && config.url.indexOf('selectUnReadMessage') === -1) {
-      await store.dispatch('refreshToken')
+instance.interceptors.request.use(
+  async config => {
+    if (getToken()) {
+      // 如果是CAS平台
+      // 在请求头部增加 切换的租户 字段（User-Information）发给后台
+      config.headers.Authorization = getToken();
+      // request.headers['Tenant_id'] = getCurrentTenantId()
+      config.headers["Tenant-ID"] = localStorage.getItem("tenantId");
+      if (config.url.indexOf("login") === -1 && config.url.indexOf("refreshToken") === -1 && config.url.indexOf("selectUnReadMessage") === -1) {
+        await store.dispatch("refreshToken");
+      }
     }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
   }
-  return config
-}, error => {
-  return Promise.reject(error)
-})
+);
 /**
  * 响应拦截
  */
-instance.interceptors.response.use(response => {
-  if ((response.data.code === 'E0B00001' && response.data.data === 'E0B00002') || response.data.code == 401) {
-    //Toast(response.data.msg);
-    return router.replace({
-      name: 'transfer',
-    })
+instance.interceptors.response.use(
+  response => {
+    if ((response.data.code === "E0B00001" && response.data.data === "E0B00002") || response.data.code == 401) {
+      //Toast(response.data.msg);
+      return router.replace({
+        name: "transfer",
+      });
+    }
+    return Promise.resolve(response);
+  },
+  error => {
+    if (error.response.status === 500 || error.response.status === 502) {
+      Toast(error.response.data.msg);
+    } else if (error.response.status == 401) {
+      //token失效
+      Toast(error.response.data.msg);
+      router.replace({
+        name: "transfer",
+      });
+    } else if (error.response.status === 404) {
+      Toast("请求接口不存在" + error.response.status);
+    } else {
+      Toast(error.response.status);
+    }
+    return Promise.reject(error);
   }
-  return Promise.resolve(response)
-}, error => {
-  if (error.response.status === 500 || error.response.status === 502) {
-    Toast(error.response.data.msg);
-  } else if (error.response.status == 401) {
-    //token失效
-    Toast(error.response.data.msg);
-    router.replace({
-      name: 'transfer',
-    })
-  } else if (error.response.status === 404) {
-    Toast('请求接口不存在' + error.response.status);
-  } else {
-    Toast(error.response.status);
-  }
-  return Promise.reject(error)
-})
+);
 const http = {
-  get: (path, data, config) =>
-    instance.get(path, { params: data, ...config }),
-    post: (path, data, config) => instance.post(path, data, config),
-    put: (path, data, config) => instance.put(path, data, config),
-    delete: (path, data, config) => instance.delete(path, { data, ...config })
-}
-export default http
+  get: (path, data, config) => instance.get(path, {params: data, ...config}),
+  post: (path, data, config) => instance.post(path, data, config),
+  put: (path, data, config) => instance.put(path, data, config),
+  delete: (path, data, config) => instance.delete(path, {data, ...config}),
+};
+export default http;
 ```
 
 ### 第二个版本
@@ -80,149 +85,146 @@ export default http
 vue+element-ui
 
 ```javascript
-import axios from 'axios'
-import router from '@/router'
-import {getToken} from '@/libs/util'
+import axios from "axios";
+import router from "@/router";
+import {getToken} from "@/libs/util";
 // 2021年6月22日：统一ui框架为elementUI
-import {
-    Message,
-    Loading
-} from 'element-ui';
-import store from '@/store/index.js'
+import {Message, Loading} from "element-ui";
+import store from "@/store/index.js";
 // import { mapActions, mapState } from 'vuex'
 const instance = axios.create({
-    // baseURL: baseUrl,
-    timeout: 105000,
-    // withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-    }
-})
+  // baseURL: baseUrl,
+  timeout: 105000,
+  // withCredentials: true,
+  headers: {
+    "Content-Type": "application/json; charset=utf-8",
+  },
+});
 let loadingInstance = null; // 记录页面中存在的loading
 let loadingCount = 0; // 记录当前正在请求的数量
 function showLoading(data) {
-    if (loadingCount === 0) {
-        loadingInstance = Loading.service({
-            lock: true,
-            text: data || '加载中……'
-        });
-    }
-    loadingCount++
-};
+  if (loadingCount === 0) {
+    loadingInstance = Loading.service({
+      lock: true,
+      text: data || "加载中……",
+    });
+  }
+  loadingCount++;
+}
 
 function hideLoading() {
-    loadingCount--
-    if (loadingInstance && loadingCount === 0) {
-        loadingInstance.close()
-        loadingInstance = null
-    }
+  loadingCount--;
+  if (loadingInstance && loadingCount === 0) {
+    loadingInstance.close();
+    loadingInstance = null;
+  }
 }
 
 // 这里的response包含每次请求的内容
 instance.interceptors.request.use(
-    async request => {
-        if (!request.loadingHide) {
-            showLoading(request.loadingText)
-        }
-        // 全局给header添加token
-        if (getToken()) {
-            // 如果是CAS平台
-            // 在请求头部增加 切换的租户 字段（User-Information）发给后台
-            request.headers.Authorization = getToken()
-            // request.headers['Tenant_id'] = getCurrentTenantId()
-            request.headers['Tenant-ID'] = localStorage.getItem('tenantId')
-            if (request.url.indexOf('login') === -1 && request.url.indexOf('refreshToken') === -1 && request.url.indexOf('selectUnReadMessage') === -1) {
-                await store.dispatch('refreshToken')
-            }
-        }
-        return request
-    },
-    error => {
-        return Promise.reject(error)
+  async request => {
+    if (!request.loadingHide) {
+      showLoading(request.loadingText);
     }
-)
+    // 全局给header添加token
+    if (getToken()) {
+      // 如果是CAS平台
+      // 在请求头部增加 切换的租户 字段（User-Information）发给后台
+      request.headers.Authorization = getToken();
+      // request.headers['Tenant_id'] = getCurrentTenantId()
+      request.headers["Tenant-ID"] = localStorage.getItem("tenantId");
+      if (request.url.indexOf("login") === -1 && request.url.indexOf("refreshToken") === -1 && request.url.indexOf("selectUnReadMessage") === -1) {
+        await store.dispatch("refreshToken");
+      }
+    }
+    return request;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 // 拦截器
 instance.interceptors.response.use(
-    (response) => {
-        if (!response.config.loadingHide) {
-            hideLoading()
-        }
-        // paas token失效
-        // || response.data.code == 401
-        if (response.data.code === 'E0B00001' && response.data.data === 'E0B00002') {
-            Message({
-                message: response.data.msg,
-                type: 'warning'
-            });
-            let timer = setTimeout(() => {
-                router.replace({
-                    name: 'login',
-                    params: {
-                        clear: true
-                    }
-                })
-                clearTimeout(timer)
-            }, 1000)
-            return
-        }
-        return response
-    },
-    (error) => {
-        if (!error.config.loadingHide) {
-            hideLoading()
-        }
-        if (error.response.status === 500 || error.response.status === 502) {
-            Message({
-                message: error.response.data.msg,
-                type: 'warning'
-            });
-        } else if (error.response.status === 404) {
-            Message({
-                message: '请求接口不存在' + error.response.status,
-                type: 'error'
-            });
-        } else if (error.response.status === 401) {
-            Message({
-                message: 'token失效，请重新登陆',
-                type: 'warning'
-            });
-            router.replace({
-                name: 'login',
-                params: {
-                    clear: true
-                }
-            })
-        } else {
-            Message({
-                message: error.response.status,
-                type: 'warning'
-            });
-        }
-        return Promise.reject(error)
+  response => {
+    if (!response.config.loadingHide) {
+      hideLoading();
     }
-)
+    // paas token失效
+    // || response.data.code == 401
+    if (response.data.code === "E0B00001" && response.data.data === "E0B00002") {
+      Message({
+        message: response.data.msg,
+        type: "warning",
+      });
+      let timer = setTimeout(() => {
+        router.replace({
+          name: "login",
+          params: {
+            clear: true,
+          },
+        });
+        clearTimeout(timer);
+      }, 1000);
+      return;
+    }
+    return response;
+  },
+  error => {
+    if (!error.config.loadingHide) {
+      hideLoading();
+    }
+    if (error.response.status === 500 || error.response.status === 502) {
+      Message({
+        message: error.response.data.msg,
+        type: "warning",
+      });
+    } else if (error.response.status === 404) {
+      Message({
+        message: "请求接口不存在" + error.response.status,
+        type: "error",
+      });
+    } else if (error.response.status === 401) {
+      Message({
+        message: "token失效，请重新登陆",
+        type: "warning",
+      });
+      router.replace({
+        name: "login",
+        params: {
+          clear: true,
+        },
+      });
+    } else {
+      Message({
+        message: error.response.status,
+        type: "warning",
+      });
+    }
+    return Promise.reject(error);
+  }
+);
 const http = {
-    get: (path, data, config) =>
-        instance.get(path, {
-            params: data,
-            ...config
-        }),
-    post: (path, data, config) => instance.post(path, data, config),
-    put: (path, data, config) => instance.put(path, data, config),
-    delete: (path, data, config) =>
-        instance.delete(path, {
-            data,
-            ...config
-        })
-}
-export default http
+  get: (path, data, config) =>
+    instance.get(path, {
+      params: data,
+      ...config,
+    }),
+  post: (path, data, config) => instance.post(path, data, config),
+  put: (path, data, config) => instance.put(path, data, config),
+  delete: (path, data, config) =>
+    instance.delete(path, {
+      data,
+      ...config,
+    }),
+};
+export default http;
 ```
 
 **第一个版本和第二个版本的使用，都是一样的，如下：**
 
- 使用
+使用
 
-①main.js中引用
+①main.js 中引用
 
 ```javascript
 //main.js
@@ -230,12 +232,12 @@ import http from "@/libs/request";
 Vue.prototype.$http = http;
 ```
 
-②vue文件中使用
+②vue 文件中使用
 
 ```vue
 <template>
   <div id="app">
-      <router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 <script>
@@ -253,78 +255,68 @@ export default {
 </script>
 ```
 
- ③ 其他js中的使用，比如vuex的store.js
+③ 其他 js 中的使用，比如 vuex 的 store.js
 
 ```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-import HTTP from '@/libs/request'
-import sysConfig from './module/sysConfig'
-import {
-    setToken
-} from '@/libs/util'
+import Vue from "vue";
+import Vuex from "vuex";
+import HTTP from "@/libs/request";
+import sysConfig from "./module/sysConfig";
+import {setToken} from "@/libs/util";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 export default new Vuex.Store({
-    state: {},
-    getters: {},
-    mutations: {},
-    actions: {
-        handleNewLogin({
-                           state,
-                           commit
-                       }, {
-                           type,
-                           appSessionKey,
-                           account,
-                           pwd,
-                           userType
-                       }) {
-            return new Promise((resolve) => {
-                let url = ""
-                let method = ""
-                let params = null
-                if (type === 'local') {
-                    url = '/cmdb-rbac/v1/sysLogin/login'
-                    method = 'post'
-                    params = {
-                        account: account.trim(),
-                        pwd: pwd,
-                        userType
-                    }
-                } else {
-                    url = '/base-auth/oauth/login'
-                    method = 'get'
-                    params = {
-                        [state.sysConfig.sso.appSessionKey]: appSessionKey,
-                        // [state.sysConfig.sso.redirectKey]: state.sysConfig.sso.redirectValue
-                    }
-                }
-                HTTP[method](url, params).then(({data: res}) => {
-                    if (res.code !== 'S1A00000') {
-                        resolve(res)
-                        return
-                    }
-                    setToken(res.data.token)
-                    localStorage.setItem('tenantId', res.data.userInfo.user.tenantId)
-                    localStorage.setItem('expireTime', res.data.expireTime)
-                    resolve(res)
-                })
-                    .catch((err) => {
-                        resolve({
-                            code: 'E0B00001',
-                            'msg': err.message
-                        })
-                    }).finally(() => {
-                })
-            })
-        },
+  state: {},
+  getters: {},
+  mutations: {},
+  actions: {
+    handleNewLogin({state, commit}, {type, appSessionKey, account, pwd, userType}) {
+      return new Promise(resolve => {
+        let url = "";
+        let method = "";
+        let params = null;
+        if (type === "local") {
+          url = "/cmdb-rbac/v1/sysLogin/login";
+          method = "post";
+          params = {
+            account: account.trim(),
+            pwd: pwd,
+            userType,
+          };
+        } else {
+          url = "/base-auth/oauth/login";
+          method = "get";
+          params = {
+            [state.sysConfig.sso.appSessionKey]: appSessionKey,
+            // [state.sysConfig.sso.redirectKey]: state.sysConfig.sso.redirectValue
+          };
+        }
+        HTTP[method](url, params)
+          .then(({data: res}) => {
+            if (res.code !== "S1A00000") {
+              resolve(res);
+              return;
+            }
+            setToken(res.data.token);
+            localStorage.setItem("tenantId", res.data.userInfo.user.tenantId);
+            localStorage.setItem("expireTime", res.data.expireTime);
+            resolve(res);
+          })
+          .catch(err => {
+            resolve({
+              code: "E0B00001",
+              msg: err.message,
+            });
+          })
+          .finally(() => {});
+      });
     },
-    modules: {
-        sysConfig
-    }
-    // plugins: [persistedState()]
-})
+  },
+  modules: {
+    sysConfig,
+  },
+  // plugins: [persistedState()]
+});
 ```
 
 ### 第三个版本

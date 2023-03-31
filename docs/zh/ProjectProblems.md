@@ -8,105 +8,105 @@
 @selection-change="selectionChangeHandler"
 
 ```vue
-<el-table
-      ref="multiTable"
-      v-loading="crud.loading"
-      lazy
-      :load="getMenus"
-      :data="list"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
-      row-key="id"
-      @select="selectChange"
-      @select-all="selectAllChange"
-      @selection-change="selectionChangeHandler"
->
 
-/**
-  * 用于树形表格多选，单选的封装
-  * @param selection
-  * @param row
-  */
-selectChange(selection, row) {
-  // 如果selection中存在row代表是选中，否则是取消选中
-  if (selection.find(val => { return this.getDataId(val) === this.getDataId(row) })) {
-    if (row.children) {//注意这里的children是后台返回数据的children字段
-      row.children.forEach(val => {
-        this.$refs.multiTable.toggleRowSelection(val, true)
-        selection.push(val)
-        if (val.children) {
-          this.selectChange(selection, val)
+<template>
+  <el-table ref="multiTable" v-loading="loading" lazy :load="getMenus" :data="list" :tree-props="{children: 'children', hasChildren: 'hasChildren'}" row-key="id" @select="selectChange" @select-all="selectAllChange" @selection-change="selectionChangeHandler"></el-table>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      loading: false,
+      getMenus: null,
+      list: [],
+    }
+  },
+  methods: {
+    /**
+     * 用于树形表格多选，单选的封装
+     * @param selection
+     * @param row
+     */
+    selectChange(selection, row) {
+      // 如果selection中存在row代表是选中，否则是取消选中
+      if (selection.find(val => { return this.getDataId(val) === this.getDataId(row) })) {
+        if (row.children) {//注意这里的children是后台返回数据的children字段
+          row.children.forEach(val => {
+            this.$refs.multiTable.toggleRowSelection(val, true)
+            selection.push(val)
+            if (val.children) {
+              this.selectChange(selection, val)
+            }
+          })
         }
-      })
-    }
-  } else {
-    this.toggleRowSelection(selection, row)
-  }
-},
-
-/**
-  * 用于树形表格多选, 选中所有
-  * @param selection
-  */
-selectAllChange(selection) {
-  // 如果选中的数目与请求到的数目相同就选中子节点，否则就清空选中
-  if (selection && selection.length === this.list.length) {
-    selection.forEach(val => {
-      this.selectChange(selection, val)
-    })
-  } else {
-    this.$refs.multiTable.clearSelection()
-  }
-},
-
-// 选择改变
-selectionChangeHandler(val) {
-  this.selections = val
-  this.unique(this.selections,'id')//这里有一个问题就是这样点选完之后，数据有重复，所以根据id手动去重，期待优化
-},
-
-/**
-  * 切换选中状态
-  * @param selection
-  * @param data
-  */
-toggleRowSelection(selection, data) {
-  if (data.children) {//注意这里的children也是后台返回数据的children字段
-    data.children.forEach(val => {
-      this.$refs.multiTable.toggleRowSelection(val, false)
-      if (val.children) {
-        this.toggleRowSelection(selection, val)
+      } else {
+        this.toggleRowSelection(selection, row)
       }
-    })
-  }
-},
-
-getDataId(data) {
-  return data['id']
-},
-
-//数组去重
-unique(arr,i){
-  for(let i=0;i<arr.length;i++){
-    for(let j=i+1;j<arr.length;j++){
-      if(arr[i].id == arr[j].id){
-        arr.splice(j,1)
-        j--
+    },
+    /**
+     * 用于树形表格多选, 选中所有
+     * @param selection
+     */
+    selectAllChange(selection) {
+      // 如果选中的数目与请求到的数目相同就选中子节点，否则就清空选中
+      if (selection && selection.length === this.list.length) {
+        selection.forEach(val => {
+          this.selectChange(selection, val)
+        })
+      } else {
+        this.$refs.multiTable.clearSelection()
       }
-    }
+    },
+    // 选择改变
+    selectionChangeHandler(val) {
+      this.selections = val
+      this.unique(this.selections, 'id')//这里有一个问题就是这样点选完之后，数据有重复，所以根据id手动去重，期待优化
+    },
+    /**
+     * 切换选中状态
+     * @param selection
+     * @param data
+     */
+    toggleRowSelection(selection, data) {
+      if (data.children) {//注意这里的children也是后台返回数据的children字段
+        data.children.forEach(val => {
+          this.$refs.multiTable.toggleRowSelection(val, false)
+          if (val.children) {
+            this.toggleRowSelection(selection, val)
+          }
+        })
+      }
+    },
+    getDataId(data) {
+      return data['id']
+    },
+    //数组去重
+    unique(arr, i) {
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i].id === arr[j].id) {
+            arr.splice(j, 1)
+            j--
+          }
+        }
+      }
+    },
+    //列表树懒加载
+    getMenus(tree, treeNode, resolve) {
+      const params = {pid: tree.id}
+      setTimeout(() => {
+        /*crudMenu.getMenus(params).then(res => {
+         resolve(res.content)
+         })*/
+      }, 100)
+    },
   }
-}，
-//列表树懒加载
-getMenus(tree, treeNode, resolve) {
-  const params = { pid: tree.id }
-  setTimeout(() => {
-    crudMenu.getMenus(params).then(res => {
-      resolve(res.content)
-    })
-  }, 100)
-},
+}
+</script>
 ```
 
-----
+---
 
 ```vue
 <!-- 存货 弹窗 -->
@@ -120,7 +120,7 @@ getMenus(tree, treeNode, resolve) {
         <el-table-column label="序号" type="index" align="center" width="60"/>
         <el-table-column type="selection" :reserve-selection="true" align="center"/>
         <el-table-column label="编号" prop="stockCode" width="180">
-          <template slot-scope="{ row }">
+          <template slot-scope="{row}">
             <el-button type="text">{{ row.stockCode }}</el-button>
           </template>
         </el-table-column>
@@ -143,37 +143,40 @@ getMenus(tree, treeNode, resolve) {
 </template>
 
 <script>
-import search from '@/views/setting/supplyChainSys/components/search'
-import pagination from '@/views/setting/supplyChainSys/components/pagination'
-import {getStockList} from '@/api/supplyChain'
+import search from "@/views/setting/supplyChainSys/components/search";
+import pagination from "@/views/setting/supplyChainSys/components/pagination";
+import {getStockList} from "@/api/supplyChain";
 
 export default {
   props: {
     dialogFormVisible: {type: Boolean, default: false},
-    parent: {type: Boolean, default: false,},//勾选项带有子项时，父项是否可选默认为false不可选，true可选
-    defaultExpandAll: {type: Boolean, default: true,},//带有子项时，是否默认展开所有子项
+    parent: {type: Boolean, default: false}, //勾选项带有子项时，父项是否可选默认为false不可选，true可选
+    defaultExpandAll: {type: Boolean, default: true}, //带有子项时，是否默认展开所有子项
   },
-  components: {search, pagination,},
+  components: {search, pagination},
   data() {
     return {
-      IsShowPage: false, titleName: '存货', tableData: [], keyword: '',
-      pagination: {total: 0, pageSize: 10, page: 1,}, checkBoxData: [],
-      treeProps: {children: 'children', hasChildren: 'hasChildren'},
-    }
+      IsShowPage: false,
+      titleName: "存货",
+      tableData: [],
+      keyword: "",
+      pagination: {total: 0, pageSize: 10, page: 1},
+      checkBoxData: [],
+      treeProps: {children: "children", hasChildren: "hasChildren"},
+    };
   },
   watch: {
     dialogFormVisible(val) {
-      this.IsShowPage = val
+      this.IsShowPage = val;
       if (val) {
-        console.log(this.checkBoxData)
+        console.log(this.checkBoxData);
         this.getStockList();
       }
     },
   },
   methods: {
     // 弹窗每次打开都会执行一次这个方法，但是这个方法在列表接口调用之后才执行
-    open() {
-    },
+    open() {},
     /**
      * 用于树形表格多选，单选的封装
      * @param selection
@@ -181,20 +184,23 @@ export default {
      */
     selectChange(selection, row) {
       // 如果selection中存在row代表是选中，否则是取消选中
-      if (selection.find(val => {
-        return this.getDataId(val) === this.getDataId(row)
-      })) {
-        if (row.children) {//注意这里的children是后台返回数据的children字段
+      if (
+        selection.find(val => {
+          return this.getDataId(val) === this.getDataId(row);
+        })
+      ) {
+        if (row.children) {
+          //注意这里的children是后台返回数据的children字段
           row.children.forEach(val => {
-            this.$refs.multiTable.toggleRowSelection(val, true)
-            selection.push(val)
+            this.$refs.multiTable.toggleRowSelection(val, true);
+            selection.push(val);
             if (val.children) {
-              this.selectChange(selection, val)
+              this.selectChange(selection, val);
             }
-          })
+          });
         }
       } else {
-        this.toggleRowSelection(selection, row)
+        this.toggleRowSelection(selection, row);
       }
     },
     /**
@@ -205,16 +211,16 @@ export default {
       // 如果选中的数目与请求到的数目相同就选中子节点，否则就清空选中
       if (selection && selection.length === this.tableData.length) {
         selection.forEach(val => {
-          this.selectChange(selection, val)
-        })
+          this.selectChange(selection, val);
+        });
       } else {
-        this.$refs.multiTable.clearSelection()
+        this.$refs.multiTable.clearSelection();
       }
     },
     // 选择改变
     selectionChangeHandler(val) {
       this.checkBoxData = val;
-      this.unique(this.checkBoxData, 'stockCode');
+      this.unique(this.checkBoxData, "stockCode");
     },
     /**
      * 切换选中状态
@@ -222,25 +228,26 @@ export default {
      * @param data
      */
     toggleRowSelection(selection, data) {
-      if (data.children) {//注意这里的children也是后台返回数据的children字段
+      if (data.children) {
+        //注意这里的children也是后台返回数据的children字段
         data.children.forEach(val => {
-          this.$refs.multiTable.toggleRowSelection(val, false)
+          this.$refs.multiTable.toggleRowSelection(val, false);
           if (val.children) {
-            this.toggleRowSelection(selection, val)
+            this.toggleRowSelection(selection, val);
           }
-        })
+        });
       }
     },
     getDataId(data) {
-      return data['stockCode']
+      return data["stockCode"];
     },
     //数组去重
     unique(arr, key) {
       for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
           if (arr[i][key] === arr[j][key]) {
-            arr.splice(j, 1)
-            j--
+            arr.splice(j, 1);
+            j--;
           }
         }
       }
@@ -250,76 +257,77 @@ export default {
       row.index = rowIndex;
     },
     getLists(val) {
-      this.pagination.page = val.page
-      this.pagination.pageSize = val.pageSize
-      this.getStockList()
+      this.pagination.page = val.page;
+      this.pagination.pageSize = val.pageSize;
+      this.getStockList();
     },
     cliSearch(val) {
       this.keyword = val;
-      this.pagination.page = 1
-      this.getStockList()
+      this.pagination.page = 1;
+      this.getStockList();
     },
     // 存货格式化 ps:阿威转一飞   (去除带有children的项)
     formatSotck(arr) {
       let stockArr = JSON.parse(JSON.stringify(arr));
       if (!this.parent) {
         stockArr = stockArr.filter(val => {
-          return !val.children
-        })
-      }//默认关闭带有children的项（根结点带有chindren，这个根结点在`parent`是false是会生效（把带有children的项过滤））
-      stockArr.forEach((item) => {
-        item.stockId = item.id
-        item.stockSkuId = item.skuId
-        item.attributeType = item.customStockName
-        item.desc = item.remark
-        item.hasShelfLife = item.shelfLife
-        item.hasBatchNo = item.batch
-        item.hasSerialNo = item.serialNum
-        delete item.id
+          return !val.children;
+        });
+      } //默认关闭带有children的项（根结点带有chindren，这个根结点在`parent`是false是会生效（把带有children的项过滤））
+      stockArr.forEach(item => {
+        item.stockId = item.id;
+        item.stockSkuId = item.skuId;
+        item.attributeType = item.customStockName;
+        item.desc = item.remark;
+        item.hasShelfLife = item.shelfLife;
+        item.hasBatchNo = item.batch;
+        item.hasSerialNo = item.serialNum;
+        delete item.id;
         if (item.multimeasureUnit === 1) {
-          item.unitList.forEach((unitItem) => {
-            unitItem.unitId = unitItem.id
-            unitItem.unitRatio = unitItem.exchangeRatio
-            delete unitItem.id
-            delete unitItem.exchangeRatio
-          })
+          item.unitList.forEach(unitItem => {
+            unitItem.unitId = unitItem.id;
+            unitItem.unitRatio = unitItem.exchangeRatio;
+            delete unitItem.id;
+            delete unitItem.exchangeRatio;
+          });
         } else {
-          this.$set(item, 'unitList', [{unitId: item.measureUnitId, unitName: item.measureUnit, unitRatio: 1,},])
+          this.$set(item, "unitList", [{unitId: item.measureUnitId, unitName: item.measureUnit, unitRatio: 1}]);
         }
         if (item.children && item.children.length) {
-          this.formatSotck(item.children)
+          this.formatSotck(item.children);
         }
-      })
-      return stockArr
+      });
+      return stockArr;
     },
     // 列表
     getStockList(obj = {}) {
       obj = Object.assign(obj, {
         page: this.pagination.page,
         pageSize: this.pagination.pageSize,
-        stockTypeId: '000',
+        stockTypeId: "000",
         status: 1,
         keyword: this.keyword,
-      })
-      getStockList(obj).then((res) => {
+      });
+      getStockList(obj).then(res => {
         let {list, total} = res.data;
         this.tableData = list;
         this.pagination.total = total;
-      })
+      });
     },
     cancel() {
       this.IsShowPage = false;
-      this.$emit('cancel');
+      this.$emit("cancel");
       this.reset();
     },
     save() {
       // 校验勾选项
       if (this.checkBoxData.length === 0) {
-        this.$message.error('请勾选需要添加的存货');
+        this.$message.error("请勾选需要添加的存货");
         return false;
       }
-      if (!this.parent) { // 开启根结点不可选， 则过滤父节点留下根节点
-        let gather = [];//存放父级stockCode
+      if (!this.parent) {
+        // 开启根结点不可选， 则过滤父节点留下根节点
+        let gather = []; //存放父级stockCode
         this.checkBoxData.forEach(item => {
           if (item.children && item.children.length) {
             gather.push(item.stockCode);
@@ -329,47 +337,48 @@ export default {
         // console.log(this.checkBoxData, 'checkBoxData');
         //0时不提示
         if (gather.length === 0) {
-          let arr = this.formatSotck(this.checkBoxData)
-          this.$emit('save', arr)
-          this.$emit('cancel');
+          let arr = this.formatSotck(this.checkBoxData);
+          this.$emit("save", arr);
+          this.$emit("cancel");
           this.IsShowPage = false;
           this.reset();
         } else {
-          this.$confirm(`勾选的存货中编号${gather.join(',')}是作为根结点的存货，不能录入，继续将过滤掉该项`, '提示', {
-            confirmButtonText: '继续',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-            let arr = this.formatSotck(this.checkBoxData)
-            this.$emit('save', arr)
-            this.$emit('cancel');
+          this.$confirm(`勾选的存货中编号${gather.join(",")}是作为根结点的存货，不能录入，继续将过滤掉该项`, "提示", {
+            confirmButtonText: "继续",
+            cancelButtonText: "取消",
+            type: "warning",
+          })
+          .then(() => {
+            let arr = this.formatSotck(this.checkBoxData);
+            this.$emit("save", arr);
+            this.$emit("cancel");
             this.IsShowPage = false;
             this.reset();
-          }).catch(() => {
+          })
+          .catch(() => {
             return false;
           });
         }
-      } else { // 开启根结点可选
-        let arr = this.formatSotck(this.checkBoxData)
-        this.$emit('save', arr)
-        this.$emit('cancel');
+      } else {
+        // 开启根结点可选
+        let arr = this.formatSotck(this.checkBoxData);
+        this.$emit("save", arr);
+        this.$emit("cancel");
         this.IsShowPage = false;
         this.reset();
       }
       // 校验勾选项 \\
     },
-    visible() {
-
-    },
+    visible() {},
     reset() {
-      this.keyword = '';
+      this.keyword = "";
       this.tableData = [];
       this.checkBoxData = [];
-      this.treeProps = {children: 'children', hasChildren: 'hasChildren'};
-      this.pagination = {total: 0, pageSize: 10, page: 1,};
-    }
+      this.treeProps = {children: "children", hasChildren: "hasChildren"};
+      this.pagination = {total: 0, pageSize: 10, page: 1};
+    },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .table-btn-warp {
@@ -378,55 +387,57 @@ export default {
 </style>
 ```
 
-## dialog可拖拽移动
+## dialog 可拖拽移动
 
 ```vue
+
 <script>
-  export default {
-   // v-directives
-   directives: {
-      dialogDrag: {
-        inserted: function (el) {
-          const dialogHeaderEl = el.querySelector('.el-dialog__header');
-          const dragDom = el.querySelector('.el-dialog');
-          dialogHeaderEl.style.cursor = 'move';
-          dialogHeaderEl.onmousedown = (e) => {
-            const disX = e['clientX'] - dialogHeaderEl.offsetLeft;
-            const disY = e['clientY'] - dialogHeaderEl.offsetTop;
-            document.onmousemove = function (e) {
-              const l = e['clientX'] - disX;
-              const t = e['clientY'] - disY;
-              dragDom.style.left = `${l}px`;
-              dragDom.style.top = `${t}px`;
-            }
-            document.onmouseup = function(e) {
-              document.onmousemove = null;
-              document.onmouseup = null;
-            }
-          }
-        }
-      }
+export default {
+  // v-directives
+  directives: {
+    dialogDrag: {
+      inserted: function (el) {
+        const dialogHeaderEl = el.querySelector(".el-dialog__header");
+        const dragDom = el.querySelector(".el-dialog");
+        dialogHeaderEl.style.cursor = "move";
+        dialogHeaderEl.onmousedown = e => {
+          const disX = e["clientX"] - dialogHeaderEl.offsetLeft;
+          const disY = e["clientY"] - dialogHeaderEl.offsetTop;
+          document.onmousemove = function (e) {
+            const l = e["clientX"] - disX;
+            const t = e["clientY"] - disY;
+            dragDom.style.left = `${l}px`;
+            dragDom.style.top = `${t}px`;
+          };
+          document.onmouseup = function (e) {
+            document.onmousemove = null;
+            document.onmouseup = null;
+          };
+        };
+      },
     },
-  }
+  },
+};
 </script>
 ```
 
 ## Element UI 低版本使用 el-cascader 数据量大造成的卡顿[^13.2]
 
 ```vue
+
 <template>
- <el-cascader @visible-change="visibleChange"></el-cascader>
+  <el-cascader @visible-change="visibleChange"></el-cascader>
 </template>
 <script>
 export default {
   methods: {
     visibleChange() {
-      this.$nextTick(()=>{
-        let $el = document.querySelectorAll('.el-cascader-panel .el-cascader-node[aria-owns]');
-        Array.from($el).map((el) => el.removeAttribute('aria-owns'));
-      })
+      this.$nextTick(() => {
+        let $el = document.querySelectorAll(".el-cascader-panel .el-cascader-node[aria-owns]");
+        Array.from($el).map(el => el.removeAttribute("aria-owns"));
+      });
     },
- }
-}
+  },
+};
 </script>
 ```

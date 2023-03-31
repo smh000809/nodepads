@@ -4,7 +4,7 @@
 
 配置 Git 的相关参数。
 
-Git 一共有3个配置文件：
+Git 一共有 3 个配置文件：
 
 1. 仓库级的配置文件：在仓库的 `.git/.gitconfig`，该配置文件只对所在的仓库有效。
 2. 全局配置文件：Mac 系统在 `~/.gitconfig`，Windows 系统在 `C:\Users\<用户名>\.gitconfig`。
@@ -265,7 +265,7 @@ $ git diff <分支名称>...<分支名称>
 ## git pull
 
 从远程仓库获取最新版本并合并到本地。
- 首先会执行 `git fetch`，然后执行 `git merge`，把获取的分支的 HEAD 合并到当前分支。
+首先会执行 `git fetch`，然后执行 `git merge`，把获取的分支的 HEAD 合并到当前分支。
 
 ```ruby
 # 从远程仓库获取最新版本。
@@ -386,7 +386,7 @@ $ git rm -r <文件夹路径>
 $ git rm --cached
 ```
 
-## Git操作场景示例
+## Git 操作场景示例
 
 ### 1. 删除掉本地不存在的远程分支
 
@@ -401,7 +401,7 @@ $ git fetch -p
 $ git fetch --prune origin
 ```
 
-## git的状态
+## git 的状态
 
 A: 你本地新增的文件（服务器上没有）.
 
@@ -409,7 +409,7 @@ C: 文件的一个新拷贝.
 
 D: 你本地删除的文件（服务器上还在）.
 
-M: 文件的内容或者mode被修改了.
+M: 文件的内容或者 mode 被修改了.
 
 R: 文件名被修改了。
 
@@ -417,9 +417,9 @@ T: 文件的类型被修改了。
 
 U: 文件没有被合并(你需要完成合并才能进行提交)。
 
-X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report)。
+X: 未知状态(很可能是遇到 git 的 bug 了，你可以向 git 提交 bug report)。
 
-# Git 二
+## Git 二
 
 ## 一、Git GUI 客户端
 
@@ -477,11 +477,11 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 ## 三、Git 浏览器插件
 
-[Git 浏览器插件下载（Chrome、Firefox、Safari、Opera，支持码云和Github）](https://gitee.com/oschina/GitCodeTree)
+[Git 浏览器插件下载（Chrome、Firefox、Safari、Opera，支持码云和 Github）](https://gitee.com/oschina/GitCodeTree)
 
-[Octotree 浏览器插件下载（Chrome，支持Github）](https://www.oschina.net/p/octotree)
+[Octotree 浏览器插件下载（Chrome，支持 Github）](https://www.oschina.net/p/octotree)
 
-[GitLab-TreeView 浏览器插件下载（Chrome，支持GitLab）](https://www.oschina.net/p/gitlab-treeview)
+[GitLab-TreeView 浏览器插件下载（Chrome，支持 GitLab）](https://www.oschina.net/p/gitlab-treeview)
 
 ## 四、在线 Git 代码托管平台
 
@@ -509,11 +509,11 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 [GitStack 开源版本下载](https://www.oschina.net/p/gitstack)
 
-[Gidder开源版本下载](https://www.oschina.net/p/gidder)
+[Gidder 开源版本下载](https://www.oschina.net/p/gidder)
 
 ## 六、Git 教程
 
-[廖雪峰 | Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+[廖雪峰 | Git 教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 [Git - Book](https://git-scm.com/book/zh/v2)
 
@@ -521,19 +521,19 @@ X: 未知状态(很可能是遇到git的bug了，你可以向git提交bug report
 
 [Git 简易指南](http://www.bootcss.com/p/git-guide/)
 
-[菜鸟教程 | Git教程](http://www.runoob.com/git/git-tutorial.html)
+[菜鸟教程 | Git 教程](http://www.runoob.com/git/git-tutorial.html)
 
-[博客园 | 深入浅出Git教程](https://www.cnblogs.com/syp172654682/p/7689328.html)
+[博客园 | 深入浅出 Git 教程](https://www.cnblogs.com/syp172654682/p/7689328.html)
 
-[W3Cschool | Git教程](https://www.w3cschool.cn/git/)
+[W3Cschool | Git 教程](https://www.w3cschool.cn/git/)
 
-[易百教程 | Git教程](https://www.yiibai.com/git/)
+[易百教程 | Git 教程](https://www.yiibai.com/git/)
 
-[Backlog | Git入门](https://backlog.com/git-tutorial/cn/intro/intro1_1.html)
+[Backlog | Git 入门](https://backlog.com/git-tutorial/cn/intro/intro1_1.html)
 
 [CSDN | Git 使用详细教程](https://blog.csdn.net/Free_Wind22/article/details/50967723)
 
-[Lufficc | Git教程](https://lufficc.com/blog/the-core-conception-of-git#版本控制系统)
+[Lufficc | Git 教程](https://lufficc.com/blog/the-core-conception-of-git#版本控制系统)
 
 ## 七、Git 常用命令
 
