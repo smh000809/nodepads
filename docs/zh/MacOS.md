@@ -251,7 +251,7 @@ $ gem update --system
 # 删除镜像源
 $ gem sources --remove  https://gems.ruby-china.org/
 # 添加镜像源
-$gem sources --add  https://gems.ruby-china.com/
+$ gem sources --add  https://gems.ruby-china.com/
 ```
 
 |             命令             |             备注             |
@@ -264,3 +264,19 @@ $gem sources --add  https://gems.ruby-china.com/
 |      `gem fetch mygem`       |    下载一个 gem，但不安装    |
 | `gem search STRING --remote` |     从可用的 gem 中搜索      |
 |       `nvm deactivate`       |       解除当前版本绑定       |
+
+## 解决 iCloud Drive 上传文件卡住的问题
+
+macOS 上经常会出现 iCloud Drive 上传或者下载文件一直卡住不动的情况。遇到这种情况除了重启电脑还可以用更简单的方法：杀掉 bird 进程具体方法如下，先打开 macOS 上的终端应用，执行以下命令来查看 bird 进程的 pid
+
+```shell
+$ ps -e | grep bird
+```
+
+开头的数字就是 pid，执行 `kill 457` 杀掉 bird 进程，文件就会立刻开始同步了。
+
+因为 pid 每次 kill 之后会变化，有个更简单的方法是配合 pgrep 命令实现一行代码杀掉 bird 进程：
+
+```shell
+kill $(pgrep bird)
+```
