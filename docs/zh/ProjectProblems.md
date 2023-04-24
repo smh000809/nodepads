@@ -8,7 +8,6 @@
 @selection-change="selectionChangeHandler"
 
 ```vue
-
 <template>
   <el-table ref="multiTable" v-loading="loading" lazy :load="getMenus" :data="list" :tree-props="{children: 'children', hasChildren: 'hasChildren'}" row-key="id" @select="selectChange" @select-all="selectAllChange" @selection-change="selectionChangeHandler"></el-table>
 </template>
@@ -441,3 +440,272 @@ export default {
 };
 </script>
 ```
+
+## Vite4 使用 Worker
+
+### utils/hash.js
+
+```js
+// SHA256算法中用到的哈希初值H
+self.hash = [
+  0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c,
+  0x1f83d9ab, 0x5be0cd19,
+];
+//监听前台传过来的信息
+self.addEventListener(
+  "message",
+  function (event) {
+    let uint8_array,
+      message,
+      block,
+      nBitsTotal,
+      output,
+      nBitsLeft,
+      nBitsTotalH,
+      nBitsTotalL;
+    uint8_array = new Uint8Array(event.data.message);
+    message = bytesToWords(uint8_array);
+    block = event.data.block;
+    event = null;
+    uint8_array = null;
+    output = {
+      block: block,
+    };
+    // 计算sha256摘要
+    if (block.end === block.file_size) {
+      nBitsTotal = block.file_size * 8;
+      nBitsLeft = (block.end - block.start) * 8;
+      nBitsTotalH = Math.floor(nBitsTotal / 0x100000000);
+      nBitsTotalL = nBitsTotal & 0xffffffff;
+      message[nBitsLeft >>> 5] |= 0x80 << (24 - (nBitsTotal % 32));
+      message[(((nBitsLeft + 64) >>> 9) << 4) + 14] = nBitsTotalH;
+      message[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotalL;
+      self.hash = sha256(message, self.hash);
+      output.result = bytesToHex(wordsToBytes(self.hash));
+    } else {
+      self.hash = sha256(message, self.hash);
+    }
+    message = null;
+    self.postMessage(output);
+  },
+  false
+);
+
+// 在SHA256算法中，用到64个常量，这些常量是对自然数中前64个质数的立方根的小数部分取前32bit而来
+var K = [
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,
+  0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+  0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786,
+  0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147,
+  0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+  0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
+  0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a,
+  0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+  0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+];
+
+function sha256(m, H) {
+  var w = [],
+    a,
+    b,
+    c,
+    d,
+    e,
+    f,
+    g,
+    h,
+    i,
+    j,
+    t1,
+    t2;
+
+  for (var i = 0; i < m.length; i += 16) {
+    a = H[0];
+    b = H[1];
+    c = H[2];
+    d = H[3];
+    e = H[4];
+    f = H[5];
+    g = H[6];
+    h = H[7];
+
+    for (var j = 0; j < 64; j++) {
+      if (j < 16) w[j] = m[j + i];
+      else {
+        var gamma0x = w[j - 15],
+          gamma1x = w[j - 2],
+          gamma0 =
+            ((gamma0x << 25) | (gamma0x >>> 7)) ^
+            ((gamma0x << 14) | (gamma0x >>> 18)) ^
+            (gamma0x >>> 3),
+          gamma1 =
+            ((gamma1x << 15) | (gamma1x >>> 17)) ^
+            ((gamma1x << 13) | (gamma1x >>> 19)) ^
+            (gamma1x >>> 10);
+
+        w[j] = gamma0 + (w[j - 7] >>> 0) + gamma1 + (w[j - 16] >>> 0);
+      }
+
+      var ch = (e & f) ^ (~e & g),
+        maj = (a & b) ^ (a & c) ^ (b & c),
+        sigma0 =
+          ((a << 30) | (a >>> 2)) ^
+          ((a << 19) | (a >>> 13)) ^
+          ((a << 10) | (a >>> 22)),
+        sigma1 =
+          ((e << 26) | (e >>> 6)) ^
+          ((e << 21) | (e >>> 11)) ^
+          ((e << 7) | (e >>> 25));
+
+      t1 = (h >>> 0) + sigma1 + ch + K[j] + (w[j] >>> 0);
+      t2 = sigma0 + maj;
+
+      h = g;
+      g = f;
+      f = e;
+      e = (d + t1) >>> 0;
+      d = c;
+      c = b;
+      b = a;
+      a = (t1 + t2) >>> 0;
+    }
+
+    H[0] = (H[0] + a) | 0;
+    H[1] = (H[1] + b) | 0;
+    H[2] = (H[2] + c) | 0;
+    H[3] = (H[3] + d) | 0;
+    H[4] = (H[4] + e) | 0;
+    H[5] = (H[5] + f) | 0;
+    H[6] = (H[6] + g) | 0;
+    H[7] = (H[7] + h) | 0;
+  }
+  return H;
+}
+
+function bytesToWords(a) {
+  for (var b = [], c = 0, d = 0; c < a.length; c++, d += 8) {
+    b[d >>> 5] |= a[c] << (24 - (d % 32));
+  }
+  return b;
+}
+function wordsToBytes(a) {
+  for (var b = [], c = 0; c < a.length * 32; c += 8) {
+    b.push((a[c >>> 5] >>> (24 - (c % 32))) & 255);
+  }
+  return b;
+}
+function bytesToHex(a) {
+  for (var b = [], c = 0; c < a.length; c++) {
+    b.push((a[c] >>> 4).toString(16)), b.push((a[c] & 15).toString(16));
+  }
+  return b.join("");
+}
+```
+
+### **.vue
+
+```vue
+<script setup>
+  import WorkerLargeFileHashSha256 from '@utils/largeFileHash.js?worker'
+
+const hashSha256 = e => {
+  let files = [];
+  let workerMap, worker;
+  let file = e.target.files[0];
+  if (!Array.isArray(file)) {
+    files.push(file);
+  } else {
+    files = file;
+  }
+  // 支持上传多文件
+  for (let i = 0; i < files.length; i++) {
+    let currentFile = files[i];
+    workerMap = [];
+    // 开启多线程
+    worker = new WorkerLargeFileHashSha256();
+    // 监听worker消息
+    worker.addEventListener("message", handleWorkerEvent(currentFile));
+    workerMap.push(worker);
+    //执行计算
+    hashFile(currentFile, workerMap);
+  }
+}
+
+const handleWorkerEvent = (item) => {
+  return (event) => {
+    if (event.data.result) {
+      let fileDigestResult = event.data.result;
+      console.log("计算结果为---------------:" + fileDigestResult);
+    } else {
+      console.log(
+        "当前进度-----:",
+        (
+          (event.data.block.end * 100) /
+          event.data.block.file_size
+        ).toFixed(2) + "%"
+      );
+    }
+  };
+}
+
+// 操作文件
+const hashFile = (file, workers) => {
+  let block, // 文件总块
+    threads, //线程数量
+    reader, // 读取文件类
+    blob; // 当前分块
+  let bufferSize = 10 * 1024; // 块大小默认 10KB
+  block = {
+    file_size: file.size,
+    start: 0,
+  };
+  block.end = bufferSize > file.size ? file.size : bufferSize; // 源文件大小和块的单位大小对比 取小者
+  threads = 0; // 线程数
+  //
+  const handleLoadBlock = (event) => {
+    for (let i = 0; i < workers.length; i += 1) {
+      threads += 1;
+      workers[i].postMessage({
+        message: event.target.result,
+        block: block,
+      });
+    }
+  };
+  // 继续文件分块
+  const handleHashBlock = () => {
+    threads -= 1;
+    if (threads === 0) {
+      if (block.end !== file.size) {
+        block.start += bufferSize;
+        block.end += bufferSize;
+        if (block.end > file.size) {
+          block.end = file.size;
+        }
+        reader = new FileReader();
+        reader.onload = handleLoadBlock;
+        blob = file.slice(block.start, block.end);
+        reader.readAsArrayBuffer(blob);
+      }
+    }
+  };
+
+  for (let i = 0; i < workers.length; i += 1) {
+    workers[i].addEventListener("message", handleHashBlock);
+  }
+  reader = new FileReader();
+  // 文件分块
+  blob = file.slice(block.start, block.end);
+  reader.readAsArrayBuffer(blob);
+  reader.onload = handleLoadBlock;
+};
+  const videoChange = e => {
+  hashSha256(e)
+  }
+</script>
+<template>
+      <input class="outline-none opacity-0 rounded-[50px] w-[50px] h-[50px]" type="file" @change="videoChange($event)" accept="video/*" capture="camcorder"/>
+</template>
+```
+
