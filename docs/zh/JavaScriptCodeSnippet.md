@@ -732,11 +732,11 @@ export default {
 ## 检查值是否是数字
 
 ```js
-const isNumber = (val) => {
-    const regPos = /^\d+(\.\d+)?$/; // 非负浮点数
-        const regNeg = /^(-((\d+\.\d*[1-9]\d*)|(\d*[1-9]\d*\.\d+)|(\d*[1-9]\d*)))$/; // 负浮点数
-    return regPos.test(val) || regNeg.test(val);
-}
+const isNumber = val => {
+  const regPos = /^\d+(\.\d+)?$/; // 非负浮点数
+  const regNeg = /^(-((\d+\.\d*[1-9]\d*)|(\d*[1-9]\d*\.\d+)|(\d*[1-9]\d*)))$/; // 负浮点数
+  return regPos.test(val) || regNeg.test(val);
+};
 ```
 
 ## 表达式算法
@@ -1026,7 +1026,14 @@ export function regSplicE(v, val) {
 <!-- 2 -->
 <input name="txt1" οnchange="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}" />
 <!-- 3 -->
-<input type="text" t_value="" o_value="" onkeypress="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value" onkeyup="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value" οnblur="if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}" />
+<input
+  type="text"
+  t_value=""
+  o_value=""
+  onkeypress="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value"
+  onkeyup="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value"
+  οnblur="if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}"
+/>
 ```
 
 ## 金额格式化

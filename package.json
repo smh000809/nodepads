@@ -9,9 +9,11 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "docs:bar": "node ./utils/index.js",
-    "docs:localStart": "yarn run docs:bar && yarn run docs:dev"
+    "docs:localStart": "yarn run docs:bar && yarn run docs:dev",
+    "format": "prettier --write ."
   },
   "devDependencies": {
+    "prettier": "^2.8.8",
     "sass": "^1.62.1",
     "vitepress": "1.0.0-alpha.74",
     "vue": "^3.2.47"

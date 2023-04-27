@@ -19,7 +19,7 @@ export default {
       loading: false,
       getMenus: null,
       list: [],
-    }
+    };
   },
   methods: {
     /**
@@ -29,18 +29,23 @@ export default {
      */
     selectChange(selection, row) {
       // 如果selection中存在row代表是选中，否则是取消选中
-      if (selection.find(val => { return this.getDataId(val) === this.getDataId(row) })) {
-        if (row.children) {//注意这里的children是后台返回数据的children字段
+      if (
+        selection.find(val => {
+          return this.getDataId(val) === this.getDataId(row);
+        })
+      ) {
+        if (row.children) {
+          //注意这里的children是后台返回数据的children字段
           row.children.forEach(val => {
-            this.$refs.multiTable.toggleRowSelection(val, true)
-            selection.push(val)
+            this.$refs.multiTable.toggleRowSelection(val, true);
+            selection.push(val);
             if (val.children) {
-              this.selectChange(selection, val)
+              this.selectChange(selection, val);
             }
-          })
+          });
         }
       } else {
-        this.toggleRowSelection(selection, row)
+        this.toggleRowSelection(selection, row);
       }
     },
     /**
@@ -51,16 +56,16 @@ export default {
       // 如果选中的数目与请求到的数目相同就选中子节点，否则就清空选中
       if (selection && selection.length === this.list.length) {
         selection.forEach(val => {
-          this.selectChange(selection, val)
-        })
+          this.selectChange(selection, val);
+        });
       } else {
-        this.$refs.multiTable.clearSelection()
+        this.$refs.multiTable.clearSelection();
       }
     },
     // 选择改变
     selectionChangeHandler(val) {
-      this.selections = val
-      this.unique(this.selections, 'id')//这里有一个问题就是这样点选完之后，数据有重复，所以根据id手动去重，期待优化
+      this.selections = val;
+      this.unique(this.selections, "id"); //这里有一个问题就是这样点选完之后，数据有重复，所以根据id手动去重，期待优化
     },
     /**
      * 切换选中状态
@@ -68,40 +73,41 @@ export default {
      * @param data
      */
     toggleRowSelection(selection, data) {
-      if (data.children) {//注意这里的children也是后台返回数据的children字段
+      if (data.children) {
+        //注意这里的children也是后台返回数据的children字段
         data.children.forEach(val => {
-          this.$refs.multiTable.toggleRowSelection(val, false)
+          this.$refs.multiTable.toggleRowSelection(val, false);
           if (val.children) {
-            this.toggleRowSelection(selection, val)
+            this.toggleRowSelection(selection, val);
           }
-        })
+        });
       }
     },
     getDataId(data) {
-      return data['id']
+      return data["id"];
     },
     //数组去重
     unique(arr, i) {
       for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
           if (arr[i].id === arr[j].id) {
-            arr.splice(j, 1)
-            j--
+            arr.splice(j, 1);
+            j--;
           }
         }
       }
     },
     //列表树懒加载
     getMenus(tree, treeNode, resolve) {
-      const params = {pid: tree.id}
+      const params = {pid: tree.id};
       setTimeout(() => {
         /*crudMenu.getMenus(params).then(res => {
          resolve(res.content)
          })*/
-      }, 100)
+      }, 100);
     },
-  }
-}
+  },
+};
 </script>
 ```
 
@@ -113,26 +119,26 @@ export default {
   <el-dialog :title="titleName" @open="open" v-if="IsShowPage" :visible.sync="IsShowPage" :append-to-body="true" width="70%" @close="cancel" :close-on-click-modal="false" :close-on-press-escape="false">
     <div class="sc-list-body">
       <div class="table-btn-warp flex_between_center">
-        <search @search="cliSearch" placeholder="请输入编码、名称"/>
+        <search @search="cliSearch" placeholder="请输入编码、名称" />
       </div>
       <el-table ref="multiTable" row-key="stockCode" :data="tableData" :default-expand-all="defaultExpandAll" :row-class-name="tableRowClassName" max-height="500" @select="selectChange" @select-all="selectAllChange" @selection-change="selectionChangeHandler" :tree-props="treeProps">
-        <el-table-column label="序号" type="index" align="center" width="60"/>
-        <el-table-column type="selection" :reserve-selection="true" align="center"/>
+        <el-table-column label="序号" type="index" align="center" width="60" />
+        <el-table-column type="selection" :reserve-selection="true" align="center" />
         <el-table-column label="编号" prop="stockCode" width="180">
           <template slot-scope="{row}">
             <el-button type="text">{{ row.stockCode }}</el-button>
           </template>
         </el-table-column>
-        <el-table-column label="名称" prop="stockName" show-overflow-tooltip width="180"/>
-        <el-table-column label="辅助属性" prop="customStockName" show-overflow-tooltip width="180"/>
-        <el-table-column label="存货类别" prop="stockTypeName" show-overflow-tooltip width="180"/>
-        <el-table-column label="规格型号" prop="specs" show-overflow-tooltip width="180"/>
-        <el-table-column label="单位" prop="measureUnit" show-overflow-tooltip align="center" width="180"/>
-        <el-table-column label="创建日期" prop="createTime" show-overflow-tooltip width="180"/>
-        <el-table-column label="创建者" prop="createUserName" show-overflow-tooltip align="center" width="180"/>
-        <el-table-column label="备注" prop="remark" show-overflow-tooltip width="180"/>
+        <el-table-column label="名称" prop="stockName" show-overflow-tooltip width="180" />
+        <el-table-column label="辅助属性" prop="customStockName" show-overflow-tooltip width="180" />
+        <el-table-column label="存货类别" prop="stockTypeName" show-overflow-tooltip width="180" />
+        <el-table-column label="规格型号" prop="specs" show-overflow-tooltip width="180" />
+        <el-table-column label="单位" prop="measureUnit" show-overflow-tooltip align="center" width="180" />
+        <el-table-column label="创建日期" prop="createTime" show-overflow-tooltip width="180" />
+        <el-table-column label="创建者" prop="createUserName" show-overflow-tooltip align="center" width="180" />
+        <el-table-column label="备注" prop="remark" show-overflow-tooltip width="180" />
       </el-table>
-      <pagination :total="pagination.total" :page.sync="pagination.page" :limit.sync="pagination.pageSize" @pagination="getLists"/>
+      <pagination :total="pagination.total" :page.sync="pagination.page" :limit.sync="pagination.pageSize" @pagination="getLists" />
     </div>
     <div slot="footer" class="dialog-footer">
       <el-button type="primary" @click="save">确定</el-button>
@@ -347,16 +353,16 @@ export default {
             cancelButtonText: "取消",
             type: "warning",
           })
-          .then(() => {
-            let arr = this.formatSotck(this.checkBoxData);
-            this.$emit("save", arr);
-            this.$emit("cancel");
-            this.IsShowPage = false;
-            this.reset();
-          })
-          .catch(() => {
-            return false;
-          });
+            .then(() => {
+              let arr = this.formatSotck(this.checkBoxData);
+              this.$emit("save", arr);
+              this.$emit("cancel");
+              this.IsShowPage = false;
+              this.reset();
+            })
+            .catch(() => {
+              return false;
+            });
         }
       } else {
         // 开启根结点可选
@@ -389,7 +395,6 @@ export default {
 ## dialog 可拖拽移动
 
 ```vue
-
 <script>
 export default {
   // v-directives
@@ -423,7 +428,6 @@ export default {
 ## Element UI 低版本使用 el-cascader 数据量大造成的卡顿[^13.2]
 
 ```vue
-
 <template>
   <el-cascader @visible-change="visibleChange"></el-cascader>
 </template>
@@ -447,22 +451,12 @@ export default {
 
 ```js
 // SHA256算法中用到的哈希初值H
-self.hash = [
-  0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c,
-  0x1f83d9ab, 0x5be0cd19,
-];
+self.hash = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
 //监听前台传过来的信息
 self.addEventListener(
   "message",
   function (event) {
-    let uint8_array,
-      message,
-      block,
-      nBitsTotal,
-      output,
-      nBitsLeft,
-      nBitsTotalH,
-      nBitsTotalL;
+    let uint8_array, message, block, nBitsTotal, output, nBitsLeft, nBitsTotalH, nBitsTotalL;
     uint8_array = new Uint8Array(event.data.message);
     message = bytesToWords(uint8_array);
     block = event.data.block;
@@ -493,17 +487,8 @@ self.addEventListener(
 
 // 在SHA256算法中，用到64个常量，这些常量是对自然数中前64个质数的立方根的小数部分取前32bit而来
 var K = [
-  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,
-  0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
-  0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786,
-  0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147,
-  0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
-  0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
-  0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a,
-  0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
-  0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85,
+  0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
 ];
 
 function sha256(m, H) {
@@ -536,28 +521,16 @@ function sha256(m, H) {
       else {
         var gamma0x = w[j - 15],
           gamma1x = w[j - 2],
-          gamma0 =
-            ((gamma0x << 25) | (gamma0x >>> 7)) ^
-            ((gamma0x << 14) | (gamma0x >>> 18)) ^
-            (gamma0x >>> 3),
-          gamma1 =
-            ((gamma1x << 15) | (gamma1x >>> 17)) ^
-            ((gamma1x << 13) | (gamma1x >>> 19)) ^
-            (gamma1x >>> 10);
+          gamma0 = ((gamma0x << 25) | (gamma0x >>> 7)) ^ ((gamma0x << 14) | (gamma0x >>> 18)) ^ (gamma0x >>> 3),
+          gamma1 = ((gamma1x << 15) | (gamma1x >>> 17)) ^ ((gamma1x << 13) | (gamma1x >>> 19)) ^ (gamma1x >>> 10);
 
         w[j] = gamma0 + (w[j - 7] >>> 0) + gamma1 + (w[j - 16] >>> 0);
       }
 
       var ch = (e & f) ^ (~e & g),
         maj = (a & b) ^ (a & c) ^ (b & c),
-        sigma0 =
-          ((a << 30) | (a >>> 2)) ^
-          ((a << 19) | (a >>> 13)) ^
-          ((a << 10) | (a >>> 22)),
-        sigma1 =
-          ((e << 26) | (e >>> 6)) ^
-          ((e << 21) | (e >>> 11)) ^
-          ((e << 7) | (e >>> 25));
+        sigma0 = ((a << 30) | (a >>> 2)) ^ ((a << 19) | (a >>> 13)) ^ ((a << 10) | (a >>> 22)),
+        sigma1 = ((e << 26) | (e >>> 6)) ^ ((e << 21) | (e >>> 11)) ^ ((e << 7) | (e >>> 25));
 
       t1 = (h >>> 0) + sigma1 + ch + K[j] + (w[j] >>> 0);
       t2 = sigma0 + maj;
@@ -604,11 +577,11 @@ function bytesToHex(a) {
 }
 ```
 
-### **.vue
+### \*\*.vue
 
 ```vue
 <script setup>
-  import WorkerLargeFileHashSha256 from '@utils/largeFileHash.js?worker'
+import WorkerLargeFileHashSha256 from "@utils/largeFileHash.js?worker";
 
 const hashSha256 = e => {
   let files = [];
@@ -631,24 +604,18 @@ const hashSha256 = e => {
     //执行计算
     hashFile(currentFile, workerMap);
   }
-}
+};
 
-const handleWorkerEvent = (item) => {
-  return (event) => {
+const handleWorkerEvent = item => {
+  return event => {
     if (event.data.result) {
       let fileDigestResult = event.data.result;
       console.log("计算结果为---------------:" + fileDigestResult);
     } else {
-      console.log(
-        "当前进度-----:",
-        (
-          (event.data.block.end * 100) /
-          event.data.block.file_size
-        ).toFixed(2) + "%"
-      );
+      console.log("当前进度-----:", ((event.data.block.end * 100) / event.data.block.file_size).toFixed(2) + "%");
     }
   };
-}
+};
 
 // 操作文件
 const hashFile = (file, workers) => {
@@ -664,7 +631,7 @@ const hashFile = (file, workers) => {
   block.end = bufferSize > file.size ? file.size : bufferSize; // 源文件大小和块的单位大小对比 取小者
   threads = 0; // 线程数
   //
-  const handleLoadBlock = (event) => {
+  const handleLoadBlock = event => {
     for (let i = 0; i < workers.length; i += 1) {
       threads += 1;
       workers[i].postMessage({
@@ -700,12 +667,11 @@ const hashFile = (file, workers) => {
   reader.readAsArrayBuffer(blob);
   reader.onload = handleLoadBlock;
 };
-  const videoChange = e => {
-  hashSha256(e)
-  }
+const videoChange = e => {
+  hashSha256(e);
+};
 </script>
 <template>
-      <input class="outline-none opacity-0 rounded-[50px] w-[50px] h-[50px]" type="file" @change="videoChange($event)" accept="video/*" capture="camcorder"/>
+  <input class="outline-none opacity-0 rounded-[50px] w-[50px] h-[50px]" type="file" @change="videoChange($event)" accept="video/*" capture="camcorder" />
 </template>
 ```
-

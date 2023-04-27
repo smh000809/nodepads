@@ -1,45 +1,45 @@
 @mixin VPImage($borderRadius) {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-    border-radius: $borderRadius;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  border-radius: $borderRadius;
 }
 
 body {
-    -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 // 首页头像
 #VPContent {
-    .VPHome {
-        .VPHomeHero {
-            .container {
-                .image {
-                    .image-container {
-                        .VPImage {
-                            @include VPImage(50%);
-                        }
-                    }
-                }
+  .VPHome {
+    .VPHomeHero {
+      .container {
+        .image {
+          .image-container {
+            .VPImage {
+              @include VPImage(50%);
             }
+          }
         }
+      }
     }
+  }
 }
 
 // 导航栏头像
 .VPNav {
-    .VPNavBar {
-        .container {
-            .VPNavBarTitle {
-                .title {
-                    .VPImage.logo {
-                        @include VPImage(6px);
+  .VPNavBar {
+    .container {
+      .VPNavBarTitle {
+        .title {
+          .VPImage.logo {
+            @include VPImage(6px);
 
-                        &:hover {
-                            transform: rotate(360deg);
-                            border-radius: 50%;
-                        }
-                    }
-                }
+            &:hover {
+              transform: rotate(360deg);
+              border-radius: 50%;
             }
+          }
         }
+      }
     }
+  }
 }

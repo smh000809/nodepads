@@ -74,7 +74,7 @@ $ git clone <远程仓库的网址> -b <分支名称> <本地目录>
 
 初始化项目所在目录，初始化后会在当前目录下出现一个名为 .git 的目录。
 
-```ruby
+```bash
 # 初始化本地仓库，在当前目录下生成 .git 文件夹
 $ git init
 ```
@@ -83,7 +83,7 @@ $ git init
 
 查看本地仓库的状态。
 
-```ruby
+```bash
 # 查看本地仓库的状态
 $ git status
 
@@ -97,7 +97,7 @@ $ git status -s
 
 操作远程库。
 
-```ruby
+```bash
 # 列出已经存在的远程仓库
 $ git remote
 
@@ -122,7 +122,7 @@ $ git remote set-url <远程仓库的别名> <新的远程仓库URL地址>
 
 操作 Git 的分支命令。
 
-```ruby
+```bash
 # 列出本地的所有分支，当前所在分支以 "*" 标出
 $ git branch
 
@@ -149,7 +149,7 @@ $ git branch -D <分支名称>
 
 检出命令，用于创建、切换分支等。
 
-```ruby
+```bash
 # 切换到已存在的指定分支
 $ git checkout <分支名称>
 
@@ -168,7 +168,7 @@ $ git checkout <文件路径>
 
 把已经提交的记录合并到当前分支。
 
-```ruby
+```bash
 # 把已经提交的记录合并到当前分支
 $ git cherry-pick <commit ID>
 ```
@@ -198,7 +198,7 @@ $ git add --interactive [<文件路径>]
 
 将暂存区中的文件提交到本地仓库中。
 
-```ruby
+```bash
 # 把暂存区中的文件提交到本地仓库，调用文本编辑器输入该次提交的描述信息
 $ git commit
 
@@ -220,7 +220,7 @@ $ git commit --amend -m 'xxx'
 
 从远程仓库获取最新的版本到本地的 tmp 分支上。
 
-```ruby
+```bash
 # 将远程仓库所有分支的最新版本全部取回到本地
 $ git fetch <远程仓库的别名>
 
@@ -232,7 +232,7 @@ $ git fetch <远程主机名> <分支名>
 
 合并分支。
 
-```ruby
+```bash
 # 把指定的分支合并到当前所在的分支下
 $ git merge <分支名称>
 ```
@@ -241,7 +241,7 @@ $ git merge <分支名称>
 
 比较版本之间的差异。
 
-```ruby
+```bash
 # 比较当前文件和暂存区中文件的差异，显示没有暂存起来的更改
 $ git diff
 
@@ -267,7 +267,7 @@ $ git diff <分支名称>...<分支名称>
 从远程仓库获取最新版本并合并到本地。
 首先会执行 `git fetch`，然后执行 `git merge`，把获取的分支的 HEAD 合并到当前分支。
 
-```ruby
+```bash
 # 从远程仓库获取最新版本。
 $ git pull
 ```
@@ -276,7 +276,7 @@ $ git pull
 
 把本地仓库的提交推送到远程仓库。
 
-```ruby
+```bash
 # 把本地仓库的分支推送到远程仓库的指定分支
 $ git push <远程仓库的别名> <本地分支名>:<远程分支名>
 
@@ -304,7 +304,7 @@ $ git log -<指定的数量>
 
 还原提交记录。
 
-```ruby
+```bash
 # 重置暂存区，但文件不受影响
 # 相当于将用 "git add" 命令更新到暂存区的内容撤出暂存区，可以指定文件
 # 没有指定 commit ID 则默认为当前 HEAD
@@ -327,7 +327,7 @@ $ git reset --hard <commit ID>
 
 生成一个新的提交来撤销某次提交，此次提交之前的所有提交都会被保留。
 
-```ruby
+```bash
 # 生成一个新的提交来撤销某次提交
 $ git revert <commit ID>
 ```
@@ -336,7 +336,7 @@ $ git revert <commit ID>
 
 操作标签的命令。
 
-```ruby
+```bash
 # 打印所有的标签
 $ git tag
 
@@ -366,7 +366,7 @@ $ git push <远程仓库的别名> –tags
 
 重命名文件或者文件夹。
 
-```ruby
+```bash
 # 重命名指定的文件或者文件夹
 $ git mv <源文件/文件夹> <目标文件/文件夹>
 ```
@@ -375,7 +375,7 @@ $ git mv <源文件/文件夹> <目标文件/文件夹>
 
 删除文件或者文件夹。
 
-```ruby
+```bash
 # 移除跟踪指定的文件，并从本地仓库的文件夹中删除
 $ git rm <文件路径>
 
@@ -392,7 +392,7 @@ $ git rm --cached
 
 多人合作开发时，如果远程的分支被其他开发删除掉，在本地执行 `git branch --all` 依然会显示该远程分支，可使用下列的命令进行删除：
 
-```ruby
+```bash
 # 使用 pull 命令，添加 -p 参数
 $ git pull -p
 
@@ -539,7 +539,7 @@ X: 未知状态(很可能是遇到 git 的 bug 了，你可以向 git 提交 bug
 
 ### 仓库
 
-```ruby
+```bash
 # 在当前目录新建一个Git代码库
 $ git init
 
@@ -552,7 +552,7 @@ $ git clone [url]
 
 ### 配置
 
-```ruby
+```bash
 # 显示当前的Git配置
 $ git config --list
 
@@ -566,7 +566,7 @@ $ git config [--global] user.email "[email address]"
 
 ### 增加/删除文件
 
-```ruby
+```bash
 # 添加指定文件到暂存区
 $ git add [file1] [file2] ...
 
@@ -592,7 +592,7 @@ $ git mv [file-original] [file-renamed]
 
 ### 代码提交
 
-```ruby
+```bash
 # 提交暂存区到仓库区
 $ git commit -m [message]
 
@@ -615,7 +615,7 @@ $ git commit --amend [file1] [file2] ...
 
 ### 分支
 
-```ruby
+```bash
 # 列出所有本地分支
 $ git branch
 
@@ -662,7 +662,7 @@ $ git branch -dr [remote/branch]
 
 ### 标签
 
-```ruby
+```bash
 # 列出所有tag
 $ git tag
 
@@ -693,7 +693,7 @@ $ git checkout -b [branch] [tag]
 
 ### 查看信息
 
-```ruby
+```bash
 # 显示有变更的文件
 $ git status
 
@@ -758,7 +758,7 @@ $ git reflog
 
 ### 远程同步
 
-```ruby
+```bash
 # 下载远程仓库的所有变动
 $ git fetch [remote]
 
@@ -786,7 +786,7 @@ $ git push [remote] --all
 
 ### 撤销
 
-```ruby
+```bash
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 
@@ -822,7 +822,7 @@ $ git stash pop
 
 ## 其他
 
-```ruby
+```bash
 # 生成一个可供发布的压缩包
 $ git archive
 # 升级 git 版本

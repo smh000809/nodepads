@@ -112,10 +112,9 @@ export default class Http {
     return this.instance(this.InsideConfig);
   }
 }
-
 ```
 
-##  utils/index.ts
+## utils/index.ts
 
 ```ts
 // 判断对象上是否有某个属性
@@ -123,7 +122,6 @@ export const hasOwn = (target: object, key: string): boolean => Object.prototype
 
 // 判断对象上是否有某个属性有的话返回属性值没有的话返回默认值
 export const hasOwnDefault = (target: object, key: string, defaultValue: any): any => (hasOwn(target, key) ? target[key] : defaultValue);
-
 ```
 
 ## stores/index.ts
@@ -168,6 +166,4 @@ export const useGlobalStore = defineStore("Global", {
   },
   persist: true, // 设置持久化
 });
-
 ```
-

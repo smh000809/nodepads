@@ -140,18 +140,18 @@ object：{name,pull,put}
             true:列表容器可以从其他列表容器内放入列表单元；
             false：与true相反；
             ['foo','bar']：这个可以是一个字符串或者是字符串的数组，代表的是group配置项里定义的name值；
-            function：用来进行put的函数判断，可以进行复杂逻辑，在函数中return false/true来判断是否放入；                     
+            function：用来进行put的函数判断，可以进行复杂逻辑，在函数中return false/true来判断是否放入；
 ```
 
 - sort：boolean 定义是否列表单元是否可以在列表容器内进行拖拽排序；
 - delay：number 定义鼠标选中列表单元可以开始拖动的延迟时间；
-- disabled：boolean 定义是否此sortable对象是否可用，为true时sortable对象不能拖放排序等功能，为false时为可以进行排序，相当于一个开关；
+- disabled：boolean 定义是否此 sortable 对象是否可用，为 true 时 sortable 对象不能拖放排序等功能，为 false 时为可以进行排序，相当于一个开关；
 - animation：number 单位：ms，定义排序动画的时间；
-- handle：selector 格式为简单css选择器的字符串，使列表单元中符合选择器的元素成为拖动的手柄，只有按住拖动手柄才能使列表单元进行拖动；
-- filter：selector 格式为简单css选择器的字符串，定义哪些列表单元不能进行拖放，可设置为多个选择器，中间用“，”分隔；
-- draggable：selector 格式为简单css选择器的字符串，定义哪些列表单元可以进行拖放
-- ghostClass：selector 格式为简单css选择器的字符串，当拖动列表单元时会生成一个副本作为影子单元来模拟被拖动单元排序的情况，此配置项就是来给这个影子单元添加一个class，我们可以通过这种方式来给影子元素进行编辑样式；
-- chosenClass：selector 格式为简单css选择器的字符串，当选中列表单元时会给该单元增加一个class；
-- forceFallback：boolean 如果设置为true时，将不使用原生的html5的拖放，可以修改一些拖放中元素的样式等；
-- fallbackClass：string 当forceFallback设置为true时，拖放过程中鼠标附着单元的样式；
-- scroll：boolean 默认为true，当排序的容器是个可滚动的区域，拖放可以引起区域滚动
+- handle：selector 格式为简单 css 选择器的字符串，使列表单元中符合选择器的元素成为拖动的手柄，只有按住拖动手柄才能使列表单元进行拖动；
+- filter：selector 格式为简单 css 选择器的字符串，定义哪些列表单元不能进行拖放，可设置为多个选择器，中间用“，”分隔；
+- draggable：selector 格式为简单 css 选择器的字符串，定义哪些列表单元可以进行拖放
+- ghostClass：selector 格式为简单 css 选择器的字符串，当拖动列表单元时会生成一个副本作为影子单元来模拟被拖动单元排序的情况，此配置项就是来给这个影子单元添加一个 class，我们可以通过这种方式来给影子元素进行编辑样式；
+- chosenClass：selector 格式为简单 css 选择器的字符串，当选中列表单元时会给该单元增加一个 class；
+- forceFallback：boolean 如果设置为 true 时，将不使用原生的 html5 的拖放，可以修改一些拖放中元素的样式等；
+- fallbackClass：string 当 forceFallback 设置为 true 时，拖放过程中鼠标附着单元的样式；
+- scroll：boolean 默认为 true，当排序的容器是个可滚动的区域，拖放可以引起区域滚动

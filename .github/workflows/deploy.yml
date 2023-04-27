@@ -26,6 +26,9 @@ jobs:
       - name: Generative navigation
         run: npm run docs:bar
 
+      - name: Format
+        run: npm run format
+
       - name: Build
         run: npm run docs:build
       - uses: actions/configure-pages@v2
