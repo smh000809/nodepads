@@ -1,11 +1,9 @@
 name: Deploy
-
 on:
   workflow_dispatch: {}
   push:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,7 +24,7 @@ jobs:
       - run: npm install
 
       - name: Generative navigation
-        run: pnpm docs:bar
+        run: npm run docs:bar
 
       - name: Build
         run: npm run docs:build
