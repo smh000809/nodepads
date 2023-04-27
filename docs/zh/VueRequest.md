@@ -13,13 +13,13 @@ import {hasOwn, hasOwnDefault} from "@/utils";
  * @param {string} contentType 请求头 Content-Type 类型 json、form、file 默认 json
  * @param {object} extendHeaders 扩展请求头 用于不满足默认的 Content-Type、token 请求头的情况
  * @param {boolean} ignoreLoading 是否忽略 loading 默认 false
- * @param {boolean} isIgnoreToken 是否忽略 token 默认 false
+ * @param {boolean} ignoreToken 是否忽略 token 默认 false
  * */
 interface HttpConfig extends AxiosRequestConfig {
   contentType?: string;
   extendHeaders?: {[key: string]: string};
   ignoreLoading?: boolean;
-  isIgnoreToken?: boolean;
+  ignoreToken?: boolean;
 }
 
 /**
@@ -75,8 +75,7 @@ export default class Http {
     // 忽略data、params、token
     if (!hasOwn(config, "data")) delete this.InsideConfig.data;
     if (!hasOwn(config, "params")) delete this.InsideConfig.params;
-    if (hasOwnDefault(config, "isIgnoreToken", true)) delete this.InsideConfig.headers[this.globalStore.getTokenKey];
-    this.interceptors(this.instance);
+    if (hasOwnDefault(config, "ignoreToken", true)) delete this.InsideConfig.headers[this.globalStore.getTokenKey];
   }
 
   private interceptors(instance: any) {
@@ -93,7 +92,7 @@ export default class Http {
       (response: AxiosResponse) => {
         this.globalStore.setLoading(false);
         const {data, status} = response;
-        return {data, status};
+        return Promise.resolve({data, status});
       },
       (error: AxiosError) => {
         this.globalStore.setLoading(false);
@@ -109,6 +108,7 @@ export default class Http {
 
   // 发送请求
   public request(): Promise<object> {
+    this.interceptors(this.instance);
     return this.instance(this.InsideConfig);
   }
 }
@@ -143,7 +143,7 @@ export const useGlobalStore = defineStore("Global", {
   state: () => ({
     loading: false as boolean, // 全局loading状态
     token: "" as string | null, // token
-    tokenKey: "dpex-token" as string, // 请求头token的key
+    tokenKey: "token" as string, // 请求头token的key
     locale: "zh_CN" as string, // 语言
   }),
   getters: {
