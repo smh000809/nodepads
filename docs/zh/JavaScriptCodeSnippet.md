@@ -303,14 +303,6 @@ const getSelectedText = () => window.getSelection().toString();
 getSelectedText();
 ```
 
-## 滚动到页面顶部
-
-```javascript
-const goToTop = () => window.scrollTo(0, 0);
-
-goToTop();
-```
-
 ## 华氏度和摄氏度之间的转化
 
 ```javascript
@@ -744,7 +736,7 @@ const isNumber = (val) => {
     const regPos = /^\d+(\.\d+)?$/; // 非负浮点数
         const regNeg = /^(-((\d+\.\d*[1-9]\d*)|(\d*[1-9]\d*\.\d+)|(\d*[1-9]\d*)))$/; // 负浮点数
     return regPos.test(val) || regNeg.test(val);
-},
+}
 ```
 
 ## 表达式算法
