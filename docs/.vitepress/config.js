@@ -2,20 +2,18 @@ const nav = require("./nav");
 const sidebar = require("./sidebar");
 const packageInfo = require("../../package.json");
 
-const isHuaweiBuild = process.env.npm_config_argv.includes("huawei:build");
-
 export default {
   lang: "zh-CN",
   title: "AHao",
   description: "热爱生活，热爱前端",
-  base: isHuaweiBuild ? "/" : "/nodepads/",
+  base: "/nodepads/",
   ignoreDeadLinks: true, // 忽略无效链接
   lastUpdated: true, // 最后更新时间
   cleanUrls: "without-subfolders", // 去除链接中的 .html 后缀
   head: [
     ["meta", {name: "theme-color", content: "#000"}],
-    ["link", {rel: "icon", href: isHuaweiBuild ? "/favicon.ico" : "/nodepads/favicon.ico"}],
-    ["link", {rel: "manifest", href: isHuaweiBuild ? "/manifest.json" : "/nodepads/manifest.json"}],
+    ["link", {rel: "icon", href: "/nodepads/favicon.ico"}],
+    ["link", {rel: "manifest", href: "/nodepads/manifest.json"}],
   ], // 设置浏览器主题颜色
   markdown: {
     headers: {
