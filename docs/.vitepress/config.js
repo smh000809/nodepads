@@ -1,7 +1,6 @@
 const nav = require("./nav");
 const sidebar = require("./sidebar");
 const packageInfo = require("../../package.json");
-
 export default {
   lang: "zh-CN",
   title: "AHao",
