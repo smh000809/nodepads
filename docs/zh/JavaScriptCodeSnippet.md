@@ -1106,3 +1106,108 @@ const list = [
 ];
 fuzzyQuery(list, "树", "name"); // [{id: 1, name: '树哥'}]
 ```
+
+## 计算文件hash值
+
+安装依赖
+
+```bash
+$ pnpm add @aws-crypto/sha256-js crypto-js
+```
+
+新建文件`hash.worker.ts`
+
+```ts
+import { Sha256 } from '@aws-crypto/sha256-js'
+import CryptoJs from 'crypto-js'
+import encHex from 'crypto-js/enc-hex'
+
+onmessage = async function (event) {
+  const data = event.data // 获取文件数据
+
+  // chunk方式读取文件
+  const chunkSize: number = 1024 * 1024 // 每次读取1MB
+  const fileSize: number = data.size // 文件大小
+  let offset: number = 0 // 偏移量
+  const createSha256Uint8Array32 = new Sha256() // SHA256 Unit8Array(32)
+  const createSha1 = CryptoJs.algo.SHA1.create() // SHA1 Hex
+  const createSha256 = CryptoJs.algo.SHA256.create() // SHA256 Hex
+  const createSha512 = CryptoJs.algo.SHA512.create() // SHA512 Hex
+  const createMD5 = CryptoJs.algo.MD5.create() // MD5
+  while (offset < fileSize) {
+    const chunk = new Uint8Array(await data.slice(offset, offset + chunkSize).arrayBuffer()) // 读取chunkSize大小的文件块
+    const wordArray = CryptoJs.lib.WordArray.create(chunk)
+    createSha256Uint8Array32.update(chunk)
+    createSha1.update(wordArray)
+    createSha256.update(wordArray)
+    createSha512.update(wordArray)
+    createMD5.update(wordArray)
+    offset += chunkSize
+    // 计算进度
+    const progress = Math.min(100, Math.round((offset / fileSize) * 100)) // 计算进度
+    console.log(progress + '%') // 打印进度
+    postMessage({ progress, offset, fileSize }) // 将进度发送给主线程
+  }
+
+  const [sha256Uint8Array32, sha1, sha256, sha512, md5] = await Promise.all([
+    createSha256Uint8Array32.digest(), // SHA256 Unit8Array(32)
+    encHex.stringify(createSha1.finalize()), // SHA1 Hex
+    encHex.stringify(createSha256.finalize()), // SHA256 Hex
+    encHex.stringify(createSha512.finalize()), // SHA512 Hex
+    encHex.stringify(createMD5.finalize()), // MD5
+  ])
+  const obj: {
+    md5: string
+    sha1: string
+    sha256: string
+    sha512: string
+    sha256Int8Array32: number[]
+  } = {
+    md5, // MD5
+    sha1, // SHA1 Hex
+    sha256, // SHA256 Hex
+    sha512, // SHA512 Hex
+    sha256Int8Array32: Array.from(new Int8Array(sha256Uint8Array32)), // SHA256 Int8Array(32)
+  }
+
+  // console.log(obj) // 打印结果对象
+  postMessage(obj) // 将结果对象发送给主线程
+}
+```
+
+Vite 中引用
+
+```ts
+// hash.worker.ts 的路径
+import HashWorker from 'hash.worker?worker'
+// 定义函数
+const getHashBuffer = (file: File): Promise<{
+  md5: string
+  sha1: string
+  sha256: string
+  sha512: string
+  sha256Int8Array32: number[]
+}> => {
+  let hashWorker = new HashWorker()
+  return new Promise(resolve=> {
+  	hashWorker.onmessage = function (event) {
+      if (event.data?.progress) {
+        // 进度逻辑
+        // ...
+        return
+      }
+  		resolve(event.data)
+  		hashWorker?.terminate()
+		}
+    hashWorker.postMessage(file)
+  })
+}
+// 引用
+const beforeUpload = async (file: File) => {
+  const hashBuffer = await getHashBuffer(file);
+  // console.log(hashBuffer)
+}
+```
+
+
+
