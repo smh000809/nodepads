@@ -144,3 +144,5 @@ docs/local
 
 .obsidian
 .idea
+
+*.lock

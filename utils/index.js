@@ -29,7 +29,7 @@ const create = (content, path, name) => {
   console.log(name + "文件生成位置:" + rootPath(path));
   fs.writeFile(rootPath(path), content, function (err) {
     if (err) throw err;
-    console.log("\033[42;30m DONE \033[40;32m File is created successfully.");
+    console.log("\x1b[42;30m DONE \x1b[40;32m File is created successfully.");
   });
 };
 
