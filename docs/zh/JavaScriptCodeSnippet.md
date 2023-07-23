@@ -931,45 +931,6 @@ export function regSplicE(v, val) {
 /^(?:\+?86)?149\d{8}$/
 ```
 
-## 只能输入数字和英文逗号
-
-```html
-<input type="text" onkeyup="this.value=this.value.replace(/[^\d\,]/g,'')" />
-```
-
-## 文本框只能输入数字代码(小数点也不能输入)
-
-```html
-<input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />
-```
-
-## 只能输入字母和汉字
-
-```html
-<input onkeyup="value=value.replace(/[\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" maxlength="10" name="Numbers" />
-```
-
-## 只能输入英文字母和数字,不能输入中文
-
-```html
-<input onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" />
-```
-
-## 只能输入数字和英文
-
-```html
-<input onkeyup="value=value.replace(/[^\d|chun]/g,'')" />
-```
-
-## 小数点后只能有最多两位(数字,中文都可输入),不能输入字母和运算符号
-
-```html
-<!-- 1 -->
-<input onkeypress="if((event.keyCode<48 || event.keyCode>57) && event.keyCode!=46 || /\.\d\d$/.test(value))event.returnValue=false" />
-<!-- 2 -->
-<input onkeyup="this.value=this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3')" />
-```
-
 ## 输入中文
 
 ```html
@@ -979,61 +940,6 @@ export function regSplicE(v, val) {
 <input id="txt" οnkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" />
 <!-- 3 -->
 <input type="text" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" />
-```
-
-## 输入数字
-
-```html
-<!-- 1 -->
-<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" />
-<!-- 2 -->
-<input οnkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />
-<!-- 3 -->
-<el-input onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" v-model="form.num2" />
-<!-- 4 -->
-<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" />
-```
-
-## 输入英文
-
-```html
-<input type="text" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')" />
-```
-
-## 仅中文,数字,英文
-
-```html
-<input onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')" />
-```
-
-## 只输入数字和字母
-
-```html
-<input class="input" maxlength="12" size="15" name="username" id="username" οnkeyup="value=value.replace(/[\W]/g,'')" />
-```
-
-## 除了英文的标点符号以为 其他的人都可以中文，英文字母，数字，中文标点
-
-```html
-<input type="text" onkeyup="this.value=this.value.replace(/^[^!@#$%^&*()-=+]/g,'')" />
-```
-
-## 只能输入数字,能输小数点
-
-```html
-<!-- 1 -->
-<input onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" />
-<!-- 2 -->
-<input name="txt1" οnchange="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}" />
-<!-- 3 -->
-<input
-  type="text"
-  t_value=""
-  o_value=""
-  onkeypress="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value"
-  onkeyup="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value"
-  οnblur="if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}"
-/>
 ```
 
 ## 金额格式化
@@ -1209,4 +1115,30 @@ const beforeUpload = async (file: File) => {
   const hashBuffer = await getHashBuffer(file);
   // console.log(hashBuffer)
 };
+```
+
+## 计算文件大小 - 取整
+```ts
+export const bytesToSize = (bytes: number) => {
+  if (bytes === 0) return '0B'
+  let k = 1024
+  let sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+  let i = Math.floor(Math.log(bytes) / Math.log(k))
+  return Number(new BigNumber(bytes).dividedBy(Math.pow(k, i)).toPrecision(3)) + sizes[i > sizes.length ? sizes.length : i]
+}
+```
+
+## 计算文件大小 - 任意精度
+```ts
+export const formatBytes = (bytes: number, decimals = 2): string => {
+  if (bytes === 0) return '0 Bytes'
+
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
+}
 ```
