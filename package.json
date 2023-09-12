@@ -4,6 +4,7 @@
   "description": "notepads",
   "main": "index.js",
   "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
@@ -13,9 +14,9 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "sass": "^1.66.1",
-    "vitepress": "1.0.0-rc.4",
+    "vitepress": "1.0.0-rc.12",
     "vue": "^3.3.4"
   }
 }
