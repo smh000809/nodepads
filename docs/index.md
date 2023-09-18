@@ -4,7 +4,7 @@ layout: home
 hero:
   name: AHao
   text: 一个简单的我
-  tagline: 热爱生活，热爱前端
+  tagline: 热爱前端，热爱生活
   image:
     src: /hero.png
     alt: 头像

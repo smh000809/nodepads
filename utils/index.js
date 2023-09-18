@@ -10,15 +10,7 @@ fs.readdirSync(rootPath("/docs/zh")).forEach(file => {
     let text = file.replace(/.md$/i, "");
     notepadToc.push({
       text: text,
-      collapsible: true,
-      collapsed: true,
       link: "/zh/" + file,
-      items: [
-        {
-          text: text,
-          link: "/zh/" + file,
-        },
-      ],
     });
   }
 });
@@ -36,12 +28,12 @@ const create = (content, path, name) => {
 [
   {
     name: "sidebar",
-    content: `module.exports={}`,
+    content: `module.exports=[{items:${JSON.stringify(notepadToc)}}]`,
     path: "/docs/.vitepress/sidebar.js",
   },
   {
     name: "navbar",
-    content: `module.exports=[{text: '首页',link: '/',},{text:'笔记📒',items:${JSON.stringify(notepadToc)}}]`,
+    content: `module.exports=[{text: '首页',link: '/',},{text:'笔记📒',link: '/zh/MacOS'}]`,
     path: "/docs/.vitepress/nav.js",
   },
 ].forEach(item => {
