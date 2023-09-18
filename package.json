@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "prettier": "^3.0.3",
-    "sass": "^1.66.1",
-    "vitepress": "1.0.0-rc.12",
+    "sass": "^1.67.0",
+    "vitepress": "1.0.0-rc.14",
     "vue": "^3.3.4"
   }
 }

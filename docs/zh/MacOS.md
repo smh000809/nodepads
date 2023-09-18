@@ -1,6 +1,6 @@
 # MacOS
 
-## [Homebrew 中文官网](https://brew.sh/index_zh-cn)
+## [Homebrew 中文官网](https://brew.sh/zh-cn/)
 
 - 安装
 
