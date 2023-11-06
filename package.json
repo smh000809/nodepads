@@ -1,6 +1,6 @@
 {
   "name": "nodepads",
-  "version": "1.2.0",
+  "version": "2.2.0",
   "description": "notepads",
   "main": "index.js",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "prettier": "^3.0.3",
     "sass": "^1.69.5",
-    "vitepress": "1.0.0-rc.24",
+    "vitepress": "1.0.0-rc.25",
     "vue": "^3.3.7"
   }
 }
