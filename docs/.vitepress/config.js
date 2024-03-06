@@ -33,7 +33,7 @@ export default {
       pattern: "Javascript:void(0);",
       text: "Edit this page on GitHub",
     }, // 编辑链接
-    socialLinks: [{icon: "github", link: "https://github.com/FTZANKE/nodepads"}], // 社交链接
+    socialLinks: [{icon: "github", link: "https://github.com/smh000809/nodepads"}], // 社交链接
     footer: {
       message: "version " + packageInfo.version,
       copyright: "Released under the MIT License. © 2023 AHao.",

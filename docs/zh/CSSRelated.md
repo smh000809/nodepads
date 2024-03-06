@@ -312,25 +312,31 @@
 ## CSS 模块绝对居中
 
 ```css
-position: absolute;
-left: 50%;
-top: 50%;
-margin-left: -当前盒子宽度的1/2;
-margin-top: -当前盒子高度的1/2;
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -当前盒子宽度的1/2;
+  margin-top: -当前盒子高度的1/2;
+}
 ```
 
 ```css
-position: absolute;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-margin: auto;
+.center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
 ```
 
 ```css
-position: absolute;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 ```
