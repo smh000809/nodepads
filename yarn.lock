@@ -785,10 +785,10 @@ rollup@^4.13.0:
     "@rollup/rollup-win32-x64-msvc" "4.13.0"
     fsevents "~2.3.2"
 
-sass@^1.72.0:
-  version "1.72.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.72.0.tgz#5b9978943fcfb32b25a6a5acb102fc9dabbbf41c"
-  integrity sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==
+sass@^1.74.1:
+  version "1.74.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.74.1.tgz#686fc227d3707dd25cb2925e1db8e4562be29319"
+  integrity sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -834,10 +834,10 @@ vite@^5.2.2:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitepress@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vitepress/-/vitepress-1.0.1.tgz#828fe140d5f4975154845b31e97437f035a36c69"
-  integrity sha512-eNr5pOBppYUUjEhv8S0S2t9Tv95LQ6mMeHj6ivaGwfHxpov70Vduuwl/QQMDRznKDSaP0WKV7a82Pb4JVOaqEw==
+vitepress@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vitepress/-/vitepress-1.0.2.tgz#5ce94d38443fa273bfa7f75c0bfb3eb1babb94b5"
+  integrity sha512-bEj9yTEdWyewJFOhEREZF+mXuAgOq27etuJZT6DZSp+J3XpQstXMJc5piSVwhZBtuj8OfA0iXy+jdP1c71KMYQ==
   dependencies:
     "@docsearch/css" "^3.6.0"
     "@docsearch/js" "^3.6.0"
