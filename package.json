@@ -9,7 +9,7 @@
     "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "format": "prettier --write ./docs"
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "prettier": "^3.3.3",

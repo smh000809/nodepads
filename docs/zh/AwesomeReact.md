@@ -1,5 +1,5 @@
-Awesome React
-===
+# Awesome React
+
 ## **Awesome React** [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 A collection of awesome things regarding the React ecosystem.
@@ -72,7 +72,6 @@ A collection of awesome things regarding the React ecosystem.
 - [fluentui](https://github.com/microsoft/fluentui) - Microsoft's Fluent UI
 - [framework7](https://github.com/framework7io/framework7) - Full featured HTML framework for building iOS & Android apps
 - [ariakit](https://github.com/ariakit/ariakit) - Toolkit for building accessible web apps with React
-
 
 #### React State Management and Data Fetching
 
