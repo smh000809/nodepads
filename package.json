@@ -4,7 +4,7 @@
   "description": "notepads",
   "main": "index.js",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
