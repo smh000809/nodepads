@@ -2,23 +2,19 @@
 
 ## 下载依赖
 
-> yarn
+> npm install
 
 ## 本地开发
 
-> yarn run docs:dev
+> npm run docs:dev
 
 ## 打包
 
-> yarn run docs:build
+> npm run docs:build
 
 ## 预览
 
-> yarn run docs:preview
-
-## 生成导航
-
-> yarn run docs:bar
+> npm run docs:preview
 
 ## 项目结构
 
@@ -48,7 +44,7 @@
 ├── utils
 |   ├── index.js // 生成sidebar
 ├── package.json
-├── yarn.lock // 依赖(yarn)
+├── package-lock.json
 └── .gitignore // git忽略文件
 ├── README.md // 项目说明
 ```
