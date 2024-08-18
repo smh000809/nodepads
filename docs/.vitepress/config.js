@@ -1,6 +1,7 @@
-const nav = require("./nav");
-const sidebar = require("./sidebar");
-const packageInfo = require("../../package.json");
+import nav from "./nav";
+import sidebar from "./sidebar";
+import PackageJSON from "../../package.json";
+
 export default {
   lang: "zh-CN",
   title: "AHao",
@@ -35,7 +36,7 @@ export default {
     }, // 编辑链接
     socialLinks: [{icon: "github", link: "https://github.com/smh000809/nodepads"}], // 社交链接
     footer: {
-      message: "version " + packageInfo.version,
+      message: "version " + PackageJSON.version,
       copyright: "Released under the MIT License. © 2023 AHao.",
     }, // 页脚
     // carbonAds: {

@@ -1,3 +1,5 @@
+Awesome React
+===
 ## **Awesome React** [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 A collection of awesome things regarding the React ecosystem.
@@ -5,12 +7,12 @@ A collection of awesome things regarding the React ecosystem.
 - [React](#react)
   - [React General Resources](#react-general-resources)
   - [React Tutorials](#react-tutorials)
-  - [React Development Tools](#react-development-tools)
   - [React Frameworks](#react-frameworks)
   - [React Component Libraries](#react-component-libraries)
   - [React State Management and Data Fetching](#react-state-management-and-data-fetching)
   - [React Styling](#react-styling)
   - [React Routing](#react-routing)
+  - [React Development Tools](#react-development-tools)
   - [React Libraries](#react-libraries)
   - [React Testing](#react-testing)
   - [React Awesome Components](#react-awesome-components)
@@ -52,46 +54,25 @@ A collection of awesome things regarding the React ecosystem.
 - [Cheatsheets for experienced React developers getting started with TypeScript](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
 - [The Fullstack Tutorial for GraphQL](https://github.com/howtographql/howtographql)
 
-#### React Development Tools
-
-- [create-react-app](https://github.com/facebook/create-react-app) - Set up a modern Web app by running one command
-- [vite](https://github.com/vitejs/vite) - Next Generation Frontend Tooling
-- [reactotron](https://github.com/skellock/reactotron) - A desktop app for inspecting your React and React Native projects
-- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) - React specific linting rules for ESLint
-- [why-did-you-render](https://github.com/welldone-software/why-did-you-render) - Monkey patches React to notify you about avoidable re-renders
-
 #### React Frameworks
 
 - [next](https://github.com/vercel/next.js) - The React Framework
 - [blitz](https://github.com/blitz-js/blitz) - The Missing Fullstack Toolkit for Next.js
-- [remix](https://remix.run/) - Full stack web Framework that lets you focus on the user interface
+- [remix](https://github.com/remix-run/remix) - Full stack web Framework that lets you focus on the user interface
 - [gatsby](https://github.com/gatsbyjs/gatsby) - Build modern websites with React
 - [react-admin](https://github.com/marmelab/react-admin) - A frontend Framework for building B2B applications
 - [refine](https://github.com/refinedev/refine) - Build your React-based CRUD applications, without constraints
-- [aleph](https://github.com/alephjs/aleph.js) - The Full-stack Framework in Deno
 
 #### React Component Libraries
 
-- [material-ui](https://github.com/mui/material-ui) - Material UI, which implements Google's Material Design
+- [material-ui](https://github.com/mui/material-ui) - Ready-to-use foundational React components
 - [ant-design](https://github.com/ant-design/ant-design) - An enterprise-class UI design language and React UI library
-- [chakra-ui](https://github.com/chakra-ui/chakra-ui/) - Simple, Modular & Accessible UI Components for your React Applications
-- [fluentui](https://github.com/microsoft/fluentui) - Microsoft's Fluent UI
-- [blueprint](https://github.com/palantir/blueprint) - A React-based Palantir's UI toolkit for the web
-- [mantine](https://github.com/mantinedev/mantine) – A fully featured React components library
-- [framework7](https://github.com/framework7io/framework7) - Full featured HTML framework for building iOS & Android apps
+- [shadcn-ui](https://github.com/shadcn-ui/ui) - Beautifully designed components built using Radix UI and Tailwind CSS
 - [react-bootstrap](https://github.com/react-bootstrap/react-bootstrap) - Bootstrap components built with React
-- [reactstrap](https://github.com/reactstrap/reactstrap) - Simple React Bootstrap components
-- [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) - The official Semantic-UI-React integration
-- [evergreen](https://github.com/segmentio/evergreen) - Evergreen React UI Framework by Segment
-- [grommet](https://github.com/grommet/grommet) - A react-based framework that provides accessibility, modularity, responsiveness, and theming
+- [fluentui](https://github.com/microsoft/fluentui) - Microsoft's Fluent UI
+- [framework7](https://github.com/framework7io/framework7) - Full featured HTML framework for building iOS & Android apps
 - [ariakit](https://github.com/ariakit/ariakit) - Toolkit for building accessible web apps with React
-- [rsuite](https://github.com/rsuite/rsuite) - A suite of React components
-- [baseweb](https://github.com/uber/baseweb) - A React Component library implementing the Uber's Base design language
-- [eui](https://github.com/elastic/eui) - Elastic UI Framework
-- [react-spectrum](https://github.com/adobe/react-spectrum) - Adobe's collection of libraries and tools
-- [ring-ui](https://github.com/JetBrains/ring-ui) - A collection of JetBrains Web UI components
-- [radix-primitives](https://github.com/radix-ui/primitives) - An open-source UI component library for building high-quality web apps
-- [nextui](https://github.com/nextui-org/nextui) - Beautiful, fast and modern React UI library
+
 
 #### React State Management and Data Fetching
 
@@ -109,7 +90,6 @@ A collection of awesome things regarding the React ecosystem.
 - [immer](https://github.com/immerjs/immer) - Create the next immutable state by mutating the current one
 - [immutable-js](https://github.com/immutable-js/immutable-js) - Immutable persistent data collections for Javascript
 - [rxdb](https://github.com/pubkey/rxdb) - A fast, offline-first, reactive database for JavaScript Applications
-- [watermelondb](https://github.com/Nozbe/WatermelonDB) - Reactive & asynchronous database for powerful React and React Native apps
 
 #### React Styling
 
@@ -117,7 +97,6 @@ A collection of awesome things regarding the React ecosystem.
 - [emotion](https://github.com/emotion-js/emotion) - CSS-in-JS library designed for high performance style composition
 - [linaria](https://github.com/callstack/linaria) - Zero-Runtime CSS in JS library
 - [vanilla-extract](https://github.com/seek-oss/vanilla-extract) - Zero-runtime Stylesheets-in-TypeScript
-- [jss](https://github.com/cssinjs/jss) - authoring tool for CSS which uses JavaScript as a host language
 
 #### React Routing
 
@@ -125,37 +104,40 @@ A collection of awesome things regarding the React ecosystem.
 - [wouter](https://github.com/molefrog/wouter) - A minimalist-friendly routing
 - [tanstack-router](https://github.com/TanStack/router) - Type-safe router with built-in caching & URL state management
 
+#### React Development Tools
+
+- [create-react-app](https://github.com/facebook/create-react-app) - Set up a modern Web app by running one command
+- [vite](https://github.com/vitejs/vite) - Next Generation Frontend Tooling
+- [parcel](https://github.com/parcel-bundler/parcel) - The zero configuration build tool for the web
+- [million](https://github.com/aidenybai/million) - An extremely fast and lightweight optimizing compiler
+- [reactotron](https://github.com/skellock/reactotron) - A desktop app for inspecting your React and React Native projects
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) - React specific linting rules for ESLint
+- [why-did-you-render](https://github.com/welldone-software/why-did-you-render) - Monkey patches React to notify you about avoidable re-renders
+
 #### React Libraries
 
 - [preact](https://github.com/preactjs/preact) - Fast React alternative with the same modern API
 - [floating-ui](https://github.com/floating-ui/floating-ui) - Toolkit to create floating elements
 - [loadable-components](https://github.com/gregberge/loadable-components) - The recommended Code Splitting library for React
-- [reapop](https://github.com/LouisBarranqueiro/reapop) - A simple and customizable React notifications system
 - [react-uploady](https://github.com/rpldy/react-uploady) - Modern file-upload components & hooks for React
 - [downshift](https://github.com/downshift-js/downshift) - React autocomplete, combobox or select dropdown components
+- [react-error-boundary](https://github.com/bvaughn/react-error-boundary) - A React error boundary component that lets you catch errors
 
 #### React Testing
 
 - [jest](https://github.com/facebook/jest) - Delightful JavaScript Testing
-- [enzyme](https://github.com/enzymejs/enzyme) - JavaScript Testing utilities for React
 - [react-testing-library](https://github.com/testing-library/react-testing-library) - Simple and complete React DOM testing utilities
-- [react-hooks-testing-library](https://github.com/testing-library/react-hooks-testing-library) - Simple and complete React hooks testing utilities
 - [cypress](https://github.com/cypress-io/cypress) - Fast, easy and reliable testing for anything that runs in a browser
 
 #### React Awesome Components
 
 - [Awesome React Components](https://github.com/brillout/awesome-react-components)
 - [react-select](https://github.com/JedWatson/react-select) - The Select Component for React
-- [react-dnd](https://github.com/react-dnd/react-dnd) - Drag and Drop for React
-- [react-rnd](https://github.com/bokuweb/react-rnd) - A resizable and draggable component for React
-- [react-dropzone](https://github.com/react-dropzone/react-dropzone) - Simple drag-drop zone with React
 - [react-big-calendar](https://github.com/jquense/react-big-calendar) - Calendar component
 - [react-datepicker](https://github.com/Hacker0x01/react-datepicker/) - A simple and reusable datepicker component for React
 - [react-loading-skeleton](https://github.com/dvtng/react-loading-skeleton) - Create skeleton screens that automatically adapt to your app
 - [react-qrcode](https://github.com/zpao/qrcode.react) - QR component for use with React
 - [react-archer](https://github.com/pierpo/react-archer) - Draw arrows between React elements
-- [react-device-detect](https://github.com/duskload/react-device-detect) - Detect device, and render view accordingly
-- [react-colorful](https://github.com/omgovich/react-colorful) - A tiny color picker component
 - [react-icons](https://github.com/react-icons/react-icons) - SVG React icons of popular icon packs
 - [react-complex-tree](https://github.com/lukasbach/react-complex-tree) - Unopinionated Accessible Tree
 - [react-insta-stories](https://github.com/mohitk05/react-insta-stories) - A React component for Instagram like stories
@@ -165,19 +147,20 @@ A collection of awesome things regarding the React ecosystem.
 - [heart-switch](https://github.com/anatoliygatt/heart-switch) - A heart-shaped toggle switch component for React
 - [kbar](https://github.com/timc1/kbar) - Fast, portable, and extensible cmd+k interface for your site
 - [tagify](https://github.com/yairEO/tagify) - Lightweight, efficient Tags input component
+- [puck](https://github.com/measuredco/puck) - The visual editor for React
 
 #### React Components Sandboxes
 
 - [storybook](https://github.com/storybookjs/storybook) - Storybook is a frontend workshop for building UI components and pages in isolation
 - [react-styleguidist](https://github.com/styleguidist/react-styleguidist) - Isolated React component development environment with a living style guide
 - [react-cosmos](https://github.com/react-cosmos/react-cosmos) - Dev tool for creating reusable React components
+- [bit](https://github.com/teambit/bit) - A build system for development of composable software
 
 #### React Forms
 
 - [react-hook-form](https://github.com/react-hook-form/react-hook-form) - React Hooks for form state management and validation
 - [formik](https://github.com/jaredpalmer/formik) - Build forms in React, without the tears
 - [react-jsonschema-form](https://github.com/mozilla-services/react-jsonschema-form) - A React component for building Web forms from JSON Schema
-- [react-final-form](https://github.com/final-form/react-final-form) - High performance subscription-based form state management for React
 - [formily](https://github.com/alibaba/formily) - Alibaba Group Unified Form Solution
 - [vest](https://github.com/ealush/vest) - Declarative validations framework
 
@@ -218,18 +201,16 @@ A collection of awesome things regarding the React ecosystem.
 
 - [react-spring](https://github.com/pmndrs/react-spring) - A spring physics based React animation library
 - [framer-motion](https://github.com/framer/motion) - Open source, production-ready animation and gesture library for React
-- [react-transition-group](https://github.com/reactjs/react-transition-group) - An easy way to perform animations for React
 - [auto-animate](https://github.com/formkit/auto-animate) - A zero-config, drop-in animation utility that adds smooth transitions
 - [react-tsparticles](https://github.com/matteobruni/tsparticles) - Easily create highly customizable particles effects
 - [react-parallax-tilt](https://github.com/mkosir/react-parallax-tilt) - Easily apply tilt hover effect on React components
-- [gooey-react](https://github.com/luukdv/gooey-react) - The gooey effect for React
 
 #### React Integration
 
 - [rescript-compiler](https://github.com/rescript-lang/rescript-compiler) - A robustly typed language that compiles to efficient and human-readable JavaScript
 - [react-rails](https://github.com/reactjs/react-rails) - Integrate React with Rails
-- [reagent](https://github.com/reagent-project/reagent) - A minimalistic ClojureScript interface to React
 - [fulcro](https://github.com/fulcrologic/fulcro) - A library for development of web applications in clj/cljs
+- [tailwind-react](https://tw-elements.com/docs/standard/integrations/react-integration/) - Article that shows you how to integrate React application with Tailwind
 
 #### React Real Apps
 
@@ -237,6 +218,7 @@ A collection of awesome things regarding the React ecosystem.
 - [kibana](https://github.com/elastic/kibana) - Your window into the Elastic Stack
 - [webamp](https://github.com/captbaritone/webamp) - Winamp 2 reimplemented for the browser
 - [overreacted](https://github.com/gaearon/overreacted.io) - Personal blog by Dan Abramov
+- [wave](https://github.com/wavetermdev/waveterm) - An open-source, cross-platform terminal for seamless workflows
 
 ### React Native
 

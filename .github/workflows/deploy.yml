@@ -23,9 +23,6 @@ jobs:
           cache: npm
       - run: npm install
 
-      - name: Generative navigation
-        run: npm run docs:bar
-
       - name: Format
         run: npm run format
 

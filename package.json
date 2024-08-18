@@ -1,6 +1,6 @@
 {
   "name": "nodepads",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "notepads",
   "main": "index.js",
   "license": "MIT",
@@ -9,14 +9,12 @@
     "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "docs:bar": "node ./utils/index.js",
-    "docs:localStart": "npm run docs:bar && npm run docs:dev",
-    "format": "prettier --write ."
+    "format": "prettier --write ./docs"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
-    "vitepress": "1.3.1",
-    "vue": "^3.4.32"
+    "vitepress": "1.3.2",
+    "vue": "^3.4.38"
   }
 }
